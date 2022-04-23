@@ -1,3 +1,6 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 확장 프로그램 Code Runner 설치 후, Ctrl + Alt + N을 눌러 테스트 실행
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * var의 변수선언
  */
@@ -27,6 +30,7 @@ console.log(val2);
 // let val2 = "new let";
 // console.log(val2);
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * const의 변수선언
  */
@@ -67,3 +71,48 @@ console.log(val5);
 
 // 맨 뒤 속성 제거
 val5.pop();
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 템플릿 문자열 ES2015
+ */
+const name = "john";
+const age = 33;
+
+// my name is [name], my age is [age]
+// ES2015이전 종래의 방법
+const msg1 = "my name is " + name + ", my age is " + age;
+console.log(msg1);
+// ES2015이후 템플릿 문자열
+const msg2 = `my name is ${name}, my age is ${age}`;
+console.log(msg2);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 화살표 함수 ES2015
+ */
+// ES2015이전 종래의 함수
+const func1 = function(str) {
+  return `str : ${str}`;
+}
+console.log(func1("function test"));
+
+// ES2015이후 화살표함수
+const func2 = (str) => {
+  return `arrow str : ${str}`
+}
+console.log(func2("function test2"))
+
+const func3 = str => {
+  return `arrow str : ${str}`
+}
+console.log(func3("function test3"))
+
+//한 줄 짜리는 return 생략
+const func4 = (str) => `single line function : ${str}`;
+console.log(func4("function test3"))
+
+// 함수 작성 예
+const sum = (a, b) => a + b;
+console.log(sum(15, 33));
