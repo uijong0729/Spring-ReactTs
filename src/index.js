@@ -116,3 +116,26 @@ console.log(func4("function test3"))
 // 함수 작성 예
 const sum = (a, b) => a + b;
 console.log(sum(15, 33));
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 분할대입 ES2015
+ */
+const myProfile = {
+  myName : "abc",
+  myAge : 38
+};
+
+// 오브젝트에서 속성을 추출
+const { myName, myAge } = myProfile;                              // 분할대입 부분
+const msg3 = `my name is ${myName} and my age is ${myAge} years`; // 분할대입 활용부분
+console.log(msg3);
+
+// 배열에서의 분할대입
+const myArray = ['aabb', 28];
+// 순서대로 받아들임
+const [nameFromArray, nameFromAge] = myArray;                                 // 분할대입 부분
+const msg4 = `my name is ${nameFromArray} and my age is ${nameFromAge} years`;// 분할대입 활용부분
+console.log(msg4);
+
