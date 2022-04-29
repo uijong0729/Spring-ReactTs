@@ -139,3 +139,43 @@ const [nameFromArray, nameFromAge] = myArray;                                 //
 const msg4 = `my name is ${nameFromArray} and my age is ${nameFromAge} years`;// 분할대입 활용부분
 console.log(msg4);
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 디폴트 값, 인수 등
+ */
+const sayHello = (name) => console.log(`hello, my name is ${name}`);
+sayHello("EUIJONG");
+sayHello();         // 변수에 아무것도 없으면 : undefined
+
+const sayHello2 = (name = "default") => console.log(`hello, my name is ${name}`);
+sayHello2();
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * 스플릿 구문 ... 
+ */
+// 1. 배열의 전개 : 배열의 내용을 순서대로 전개해 처리
+const arr1 = [1, 2];
+console.log(arr1);    //[ 1, 2 ]
+console.log(...arr1); //1 2
+
+const sumFunc = (num1, num2) => console.log(num1 + num2);
+sumFunc(arr1[0], arr1[1]);
+sumFunc(...arr1);
+const arr12 = [1, 2, 3, 4];
+sumFunc(...arr12);  // 순서대로 처리되므로 인수로는 1과 2가 들어온다
+
+// 2. 배열 정리
+const arr2 = [1,2,3,4,5];
+const [number1, number2, ...arr3] = arr2;
+console.log(`${number1}\n${number2}\n${arr3}`);
+
+// 3. 배열 복사, 결합
+const arr4 = [10, 20];
+const arr5 = [30, 40];
+const arrCopy = [...arr4];              // 참조형이 아니라 새로 복사하는 것
+const arrCombine = [...arr4, ...arr5];
+console.log(arrCopy);
+console.log(arrCombine);
