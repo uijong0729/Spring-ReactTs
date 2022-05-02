@@ -8,20 +8,19 @@
 
   <body>
     <div class="input-area default-space">
-      <input placeholder="todo를 입력"/>
-      <button>추가</button>
+      <input id="text-add" placeholder="todo를 입력"/>
+      <button id="bt-add">추가</button>
     </div>
     <div class="imcomplete-area default-space">
       <p class="title">미완료TODO</p>
-      <ul class="list-row">
-          <li><span>TODO </span><button>완료</button><button>삭제</button></li>
+      <ul id="todo-list" class="list-row">
+          <!-- <li><span>TODO </span><button>완료</button><button>삭제</button></li> -->
       </ul>
     </div>
     <div class="complete-area default-space">
       <p class="title">완료TODO</p>
-      <ul class="list-row">
-        <li><span>TODO 1 </span><button>완료취소</button></li>
-        <li><span>TODO 2 </span><button>완료취소</button></li>
+      <ul id="todo-list-cancel" class="list-row">
+        <!-- <li><span>TODO 1 </span><button>삭제</button></li> -->
       </ul>
     </div>
     
