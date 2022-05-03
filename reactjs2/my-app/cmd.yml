@@ -1,0 +1,4 @@
+# 초기 앱 만들기
+npx create-react-app my-app
+# Live 서버 실행
+npm start
