@@ -16,14 +16,22 @@ export const App = () => {
   // 입력 후 TODO를 추가하는 이벤트
   const onClickAdd = () => {
     // 입력이 없을경우 추가하지 않음
-    if (todoText = "") return;
-
+    if (todoText == '') return;
     // 새로운 배열 생성 (incompleteTodos복사본 + 입력한TODO)
     const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
-    
     // input요소를 초기화
     setTodoText('');
+  }
+
+  // TODO를 삭제하는 이벤트
+  const onClickDelete = (i) => {
+    // 새로운 배열을 카피
+    const newTodos = [...incompleteTodos];
+    // i번째 요소부터 연속되는 1개를 삭제
+    newTodos.splice(i, 1);
+    // 배열의 변화를 반영(useState)
+    setIncompleteTodos(newTodos);
   }
 
   return (
@@ -38,10 +46,14 @@ export const App = () => {
     
     <ul>
       {/* map으로 배열요소 반복처리 */}
-      { incompleteTodos.map((todo) => {
+      { incompleteTodos.map((todo, i) => {
         return (
             // 루프로 렌더링하는 경우 요소를 특정하기 위해 key를 지정해두어야한다.
-            <li key={todo}>{todo}<button>완료</button><button>삭제</button></li>
+            <li key={i}>
+              {todo}
+              <button>완료</button>
+              <button onClick={() => onClickDelete(i)}>삭제</button>
+            </li>
           );
         }) 
       }
@@ -50,7 +62,7 @@ export const App = () => {
   <div className='complete-area default-space'>
     <p className='title'>완료TODO</p>
     <ul>
-      { completeTodos.map((todo) => {
+      { completeTodos.map((todo, i) => {
           return (
             <li key={todo}>{todo}<button>삭제</button></li>
           );
