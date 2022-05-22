@@ -16,7 +16,7 @@ export const App = () => {
   // 입력 후 TODO를 추가하는 이벤트
   const onClickAdd = () => {
     // 입력이 없을경우 추가하지 않음
-    if (todoText == '') return;
+    if (todoText === '') return;
     // 새로운 배열 생성 (incompleteTodos복사본 + 입력한TODO)
     const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
@@ -29,9 +29,23 @@ export const App = () => {
     // 새로운 배열을 카피
     const newTodos = [...incompleteTodos];
     // i번째 요소부터 연속되는 1개를 삭제
-    newTodos.splice(i, 1);
+    const deletedElement = newTodos.splice(i, 1);
     // 배열의 변화를 반영(useState)
     setIncompleteTodos(newTodos);
+    return deletedElement;
+  }
+
+  // TODO를 완료TODO로 이동시키는 이벤트
+  const onClickComplete = (i) => {
+    const newCompeteTodos = [...completeTodos, onClickDelete(i)];
+    setCompleteTodos(newCompeteTodos);
+  }
+
+  // 완료된 TODO는 확인이 끝나면 쓸모없는 정보이기 때문에 완전삭제
+  const onClickPermanentlyDelete = (i) => {
+    const tempArray = [...completeTodos];
+    tempArray.splice(i, 1);
+    setCompleteTodos(tempArray);
   }
 
   return (
@@ -51,7 +65,7 @@ export const App = () => {
             // 루프로 렌더링하는 경우 요소를 특정하기 위해 key를 지정해두어야한다.
             <li key={i}>
               {todo}
-              <button>완료</button>
+              <button onClick={() => onClickComplete(i)}>완료</button>
               <button onClick={() => onClickDelete(i)}>삭제</button>
             </li>
           );
@@ -64,7 +78,10 @@ export const App = () => {
     <ul>
       { completeTodos.map((todo, i) => {
           return (
-            <li key={todo}>{todo}<button>삭제</button></li>
+            <li key={todo}>
+              {todo}
+              <button onClick={() => onClickPermanentlyDelete(i)}>삭제</button>
+            </li>
           );
         }) 
       }
