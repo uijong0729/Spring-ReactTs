@@ -1,5 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { InputTodo } from './components/InputTodo'; // TODO를 입력하기 위한 컴포넌트
+import { IncompleteTodos } from './components/IncompleteTodos';
+import { CompleteTodos } from './components/CompleteTodos';
 
 export const App = () => {
   // TODO를 입력하는 input 부분에 대해서도 키보드를 누를 때마다 상태가 변하기 때문에 추가
@@ -50,42 +53,22 @@ export const App = () => {
 
   return (
   <>
-  <div className='input-area default-space'>
-    <input placeholder='TODO를 입력' value={todoText} onChange={onChangeText}></input>
-    <button onClick={onClickAdd}>추가</button>
-  </div>
+  <InputTodo 
+    todoText={todoText} 
+    onChange={onChangeText} 
+    onClick={onClickAdd} 
+    />
 
-  <div className='imcomplete-area default-space'>
-    <p className='title'>미완료 TODO</p>
-    
-    <ul>
-      {/* map으로 배열요소 반복처리 */}
-      { incompleteTodos.map((todo, i) => {
-        return (
-            // 루프로 렌더링하는 경우 요소를 특정하기 위해 key를 지정해두어야한다.
-            <li key={i}>
-              {todo}
-              <button onClick={() => onClickComplete(i)}>완료</button>
-              <button onClick={() => onClickDelete(i)}>삭제</button>
-            </li>
-          );
-        }) 
-      }
-    </ul>
-  </div>
-  <div className='complete-area default-space'>
-    <p className='title'>완료TODO</p>
-    <ul>
-      { completeTodos.map((todo, i) => {
-          return (
-            <li key={todo}>
-              {todo}
-              <button onClick={() => onClickPermanentlyDelete(i)}>삭제</button>
-            </li>
-          );
-        }) 
-      }
-    </ul>
-  </div>
-  </>);
+  <IncompleteTodos
+    arrTodo={incompleteTodos}
+    funcComplete={onClickComplete}
+    funcDelete={onClickDelete}
+   />
+
+  <CompleteTodos
+    arrTodo={completeTodos}
+    funcPermanentlyDelete={onClickPermanentlyDelete}
+    />
+  </>
+  );
 }
