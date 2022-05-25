@@ -1,0 +1,58 @@
+
+body {
+    font-family: sans-serif;
+  }
+  
+  input {
+    border-radius: 16px;
+    border: none;
+    /* 상하6px 좌우16px */
+    padding: 6px 16px; 
+    /* 입력창에 포커스를 대었을때 나타나는 테두리 */
+    outline: none;
+  }
+  
+  button {
+    border-radius: 16px;
+    border: 1px solid black;
+    padding: 4px 16px;
+    margin-left: 5px;
+  }
+  
+  button:hover {
+    background-color: blue;
+    color: white;
+    /* 마우스를 대었을때 커서 모양을 손가락으로 */
+    cursor: pointer;
+  }
+  
+  .default-space {
+    padding: 8px;
+    margin: 8px;
+  }
+    
+  .imcomplete-area {
+    background-color: #c6ffe2;
+    width: 400px;
+    min-height: 200px;
+    border-radius: 8px;
+  }
+  
+  .complete-area {
+    background-color: #ffffe0;
+    width: 400px;
+    min-height: 200px;
+    border-radius: 8px;
+  }
+  
+  .title {
+    text-align: center;
+    margin-top: 0%;
+    font-weight: bold;
+    color: #454;
+  }
+  
+  li {
+    padding-bottom: 8px;
+    align-items: center;
+  }

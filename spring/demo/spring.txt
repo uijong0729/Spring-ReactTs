@@ -1,0 +1,7 @@
+# 스프링 실행
+cd D:\code\javascript\react\start_react\spring\demo
+./gradlew bootRun
+
+# react 빌드
+cd D:\code\javascript\react\start_react\spring\demo\src\main\resources\react
+npm build
