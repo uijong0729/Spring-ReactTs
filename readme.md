@@ -10,8 +10,9 @@ cd D:\code\javascript\react\start_react\spring\demo
 # node_moduels가 없다면
 npm install
 
-#spring rest확인
+
+# spring rest확인
 http://localhost:8080/test/ok
 
-#react 확인
+# react 확인
 http://localhost:8080/home
