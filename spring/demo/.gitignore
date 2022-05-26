@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### react : public이하는 빌드파일이므로 제외
+!**/node_modules/**
+!**/public/**
