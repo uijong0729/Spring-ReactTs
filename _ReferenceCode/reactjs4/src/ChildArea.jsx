@@ -20,6 +20,7 @@ export const ChildArea = memo((props) => {
 
     return (
         <>
+        {/* 재렌더링 예제 */}
         {open ? (
           <div style={style}>
             <p>child</p>
