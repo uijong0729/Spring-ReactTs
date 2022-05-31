@@ -10,6 +10,7 @@ import { Emotion } from './components/Emotion';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
     {/* 리렌더링 예제 */}
     <App />
     
@@ -23,5 +24,6 @@ root.render(
     <StyledComponents></StyledComponents>
     {/* ★★Emotion 예제★★ : 위 4가지 방식을 전부 아우르는 라이브러리 */}
     <Emotion></Emotion>
+      
   </React.StrictMode>
 );
