@@ -3,6 +3,8 @@ import { Page1 } from './Page1';
 import { Page2 } from './Page2';
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 
+// react-router-dom v6 레퍼런스
+// https://reactrouterdotcom.fly.dev/docs/en/v6/upgrading/v5
 export default function App() {
   return(
     // 라우터를 사용하기 위해선 BrowserRouter로 감싸주어야 한다.
@@ -13,6 +15,7 @@ export default function App() {
         <Link to="/page2">Page2</Link><br/>
       </div>
       <br/>
+      
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/page1" element={<Page1 />}/>
