@@ -13,9 +13,9 @@ import lombok.Setter;
 public class TodoEntity {
     
     @Id @GeneratedValue
-    Long id;
+    public Long id;
     
-    String text;
+    public String text;
     
-    Status status;
+    public TodoStatus status;
 }

@@ -1,5 +1,5 @@
 package com.example.demo.Entity;
 
-public enum Status {
+public enum TodoStatus {
     IMCOMPLETED, COMPLETED, DELETED
 }

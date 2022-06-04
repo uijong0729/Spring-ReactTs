@@ -1,13 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.Bean.Todo;
+import com.example.demo.Entity.TodoEntity;
+import com.example.demo.Entity.TodoStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/test")
+@RestController
 public class TestController {
     
     @GetMapping("/ok")
@@ -16,7 +17,17 @@ public class TestController {
     }
 
     @GetMapping("/putTodo")
-    public ResponseEntity<Todo> putTodo(@RequestBody Todo todo) {
+    public ResponseEntity<TodoEntity> putTodo(@RequestBody TodoEntity todo) {
         return ResponseEntity.ok(todo);
+    }
+
+    @GetMapping("/getTodo")
+    public ResponseEntity<TodoEntity> getTodo() {
+        TodoEntity entity = new TodoEntity();
+        entity.setId(0L);
+        entity.setStatus(TodoStatus.COMPLETED);
+        entity.setText("Completed");
+
+        return ResponseEntity.ok(entity);
     }
 }

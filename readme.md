@@ -12,7 +12,7 @@ cd D:\code\javascript\react\start_react\spring\demo
 ~~~
 
 # spring rest확인
-http://localhost:8080/test/ok
+http://localhost:8080/getTodo
 
 # react 확인
 http://localhost:8080/home
