@@ -2,6 +2,8 @@ import { Home } from './Home';
 import { Page1 } from './Page1';
 import { Page2 } from './Page2';
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+import { Page1DetailA } from './Page1DetailA';
+import { Page1DetailB } from './Page1DetailB';
 
 // react-router-dom v6 레퍼런스
 // https://reactrouterdotcom.fly.dev/docs/en/v6/upgrading/v5
@@ -18,7 +20,16 @@ export default function App() {
       
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/page1" element={<Page1 />}/>
+
+        <Route path="/page1/*" element={<Page1 />}>
+            {/* Outlet을 사용하지 않을때 사용
+                <Route path="" element={<Page1 />}/> 
+             */}
+             
+            <Route path="detailA" element={<Page1DetailA />} />
+            <Route path="detailB" element={<Page1DetailB />} />
+        </Route>
+
         <Route path="/page2" element={<Page2 />}/>
       </Routes>
     </BrowserRouter>
