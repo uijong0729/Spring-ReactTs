@@ -3,11 +3,13 @@ import { UrlParameter } from './../UrlParameter';
 
 export const Page2Routes = [
     {
-        path: "/page2",
-        element: <Page2 />
+        path: "",
+        element: <Page2 />,
+        end: true
     },
     {
-        path: "/page2/:id",
-        element: <UrlParameter />
+        path: ":id",
+        element: <UrlParameter />,
+        end: true
     }
 ];
