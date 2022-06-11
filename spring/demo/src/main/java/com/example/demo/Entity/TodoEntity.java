@@ -17,5 +17,10 @@ public class TodoEntity {
     
     public String text;
     
-    public TodoStatus status;
+    public TodoStatus status = TodoStatus.IMCOMPLETED;
+
+    @Override
+    public String toString() {
+        return String.format("id : %d, text: %s, status: %s", id, text, status.toString());
+    }
 }
