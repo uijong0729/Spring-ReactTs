@@ -5,6 +5,12 @@ cd D:\code\javascript\react\start_react\spring\demo\react_src
 npm run-script build
 ~~~
 
+# 화면만 대충 확인
+~~~
+cd D:\code\javascript\react\start_react\spring\demo\react_src
+npm start
+~~~
+
 # 스프링 실행
 ~~~
 cd D:\code\javascript\react\start_react\spring\demo

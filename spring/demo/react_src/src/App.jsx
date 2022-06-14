@@ -4,6 +4,9 @@ import { InputTodo } from './components/InputTodo'; // TODO를 입력하기 위�
 import { IncompleteTodos } from './components/IncompleteTodos';
 import { CompleteTodos } from './components/CompleteTodos';
 import { Message } from './components/Message';
+import { AppRouter } from './AppRouter';
+import { Link } from "react-router-dom"
+import { BrowserRouter } from 'react-router-dom';
 
 export const App = () => {
   // TODO를 입력하는 input 부분에 대해서도 키보드를 누를 때마다 상태가 변하기 때문에 추가
@@ -54,27 +57,27 @@ export const App = () => {
 
   return (
   <>
-  <InputTodo 
-    todoText={todoText} 
-    onChange={onChangeText} 
-    onClick={onClickAdd}
-    disabled={incompleteTodos.length > 4}
+    <InputTodo 
+      todoText={todoText} 
+      onChange={onChangeText} 
+      onClick={onClickAdd}
+      disabled={incompleteTodos.length > 4}
+      />
+
+    <Message
+      todos={incompleteTodos}
     />
 
-  <Message
-    todos={incompleteTodos}
-  />
-
-  <IncompleteTodos
-    arrTodo={incompleteTodos}
-    funcComplete={onClickComplete}
-    funcDelete={onClickDelete}
-   />
-
-  <CompleteTodos
-    arrTodo={completeTodos}
-    funcPermanentlyDelete={onClickPermanentlyDelete}
+    <IncompleteTodos
+      arrTodo={incompleteTodos}
+      funcComplete={onClickComplete}
+      funcDelete={onClickDelete}
     />
+
+    <CompleteTodos
+      arrTodo={completeTodos}
+      funcPermanentlyDelete={onClickPermanentlyDelete}
+      />
   </>
   );
 }
