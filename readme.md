@@ -18,7 +18,9 @@ cd D:\code\javascript\react\start_react\spring\demo
 ~~~
 
 # spring rest확인
+```
 curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
+```
 
 # react 확인
 http://localhost:8080/
