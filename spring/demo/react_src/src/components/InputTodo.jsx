@@ -1,4 +1,5 @@
 import React from "react";
+import { BlueButton } from "./button/BlueButton";
 
 export const InputTodo = (props) => {
     // props로부터 분할대입
@@ -7,7 +8,7 @@ export const InputTodo = (props) => {
     return (
       <div className='input-area default-space'>
         <input disabled={disabled} placeholder='TODO를 입력' value={todoText} onChange={onChange}></input>
-        <button disabled={disabled} onClick={onClick}>추가</button>
+        <BlueButton disabled={disabled} onClick={onClick}>추가</BlueButton>
       </div>
     )
 };

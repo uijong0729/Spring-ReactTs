@@ -1,4 +1,5 @@
 import React from "react";
+import { BlueButton } from "./button/BlueButton";
 
 // Css in js는 바람직한지 어떤지 아직 논의중인 사항
 const style = {
@@ -21,7 +22,7 @@ export const CompleteTodos = (props) => {
               return (
                 <li key={todo}>
                   {todo}
-                  <button onClick={() => funcPermanentlyDelete(i)}>삭제</button>
+                  <BlueButton onClick={() => funcPermanentlyDelete(i)}>삭제</BlueButton>
                 </li>
               );
             }) 

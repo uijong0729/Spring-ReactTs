@@ -12,20 +12,6 @@ body {
     outline: none;
   }
   
-  button {
-    border-radius: 16px;
-    border: 1px solid black;
-    padding: 4px 16px;
-    margin-left: 5px;
-  }
-  
-  button:hover {
-    background-color: blue;
-    color: white;
-    /* 마우스를 대었을때 커서 모양을 손가락으로 */
-    cursor: pointer;
-  }
-  
   .default-space {
     padding: 8px;
     margin: 8px;

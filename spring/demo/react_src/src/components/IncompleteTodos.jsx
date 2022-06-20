@@ -1,4 +1,5 @@
 import React from "react";
+import { BlueButton } from "./button/BlueButton";
 
 export const IncompleteTodos = (props) => {
     const {arrTodo, funcComplete, funcDelete} = props;
@@ -14,8 +15,8 @@ export const IncompleteTodos = (props) => {
                 // 루프로 렌더링하는 경우 요소를 특정하기 위해 key를 지정해두어야한다.
                 <li key={i}>
                   {todo}
-                  <button onClick={() => funcComplete(i)}>완료</button>
-                  <button onClick={() => funcDelete(i)}>삭제</button>
+                  <BlueButton onClick={() => funcComplete(i)}>완료</BlueButton>
+                  <BlueButton onClick={() => funcDelete(i)}>삭제</BlueButton>
                 </li>
               );
             }) 
