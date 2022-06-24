@@ -1,20 +1,37 @@
+import styled from "styled-components"
+import { Card } from './../../card/Card';
+import { UserIconWithName } from './../../molecules/user/UserIconWithName';
 
+export const UserCard = (props) => {
+    const {user} = props;
 
-export const UserCard = () => {
     return (
-        <div>
-            <img alt="프로필" />
-            <p>이름</p>
-            <dl>
+        <Card>
+            <UserIconWithName img={user.img} name={user.name}/>
+            <SDl>
                 <dt>메일</dt>
-                <dd>11111@aaaaa.aa.com</dd>
+                <dd>{user.email}</dd>
 
                 <dt>전화번호</dt>
-                <dd>1111-1111</dd>
+                <dd>{user.phone}</dd>
 
                 <dt>부서</dt>
-                <dd>머머머머</dd>
-            </dl>
-        </div>
+                <dd>{user.department.name}</dd>
+            </SDl>
+        </Card>
     )
 }
+
+const SDl = styled.dl`
+    margin-bottom: 0px;
+    text-align: left;
+
+    dt {
+        float: left;
+    }
+
+    dd {
+        padding-left: 32px;
+        padding-bottom: 8px;
+    }
+`

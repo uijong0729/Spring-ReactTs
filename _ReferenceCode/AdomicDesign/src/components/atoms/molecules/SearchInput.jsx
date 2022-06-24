@@ -20,4 +20,5 @@ const SButtonWrapper = styled.div`
 const SContainer = styled.div`
     display: flex;
     align-tiems: center;
+    margin-top: 30px;
 `
