@@ -1,6 +1,9 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { SearchInput } from './components/atoms/molecules/SearchInput';
 import { UserCard } from './components/atoms/organisms/user/UserCard';
+import { DefaultLayout } from './components/atoms/page_template/DefaultLayout';
+import { HeaderOnly } from './components/atoms/page_template/HeaderOnly';
 
 const user = {
   name: "John hoge",
@@ -15,10 +18,12 @@ const user = {
 
 function App() {
   return (
-    <div className="App">
-      <SearchInput>검색</SearchInput>
-      <UserCard user={user}/>
-    </div>
+    <BrowserRouter>
+      <DefaultLayout>
+        <SearchInput>검색</SearchInput>
+        <UserCard user={user}/>
+      </DefaultLayout>
+    </BrowserRouter>
   );
 }
 
