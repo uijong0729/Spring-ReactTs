@@ -1,14 +1,21 @@
 import styled from "styled-components"
 
 export const UserIconWithName = (props) => {
-    const {img, name} = props
+    const {img, name, isAdmin} = props
     return (
         <SContainer>
             <SImg height={160} width={160} src={img} alt="프로필" />
             <SName>{name}</SName>
+            { isAdmin && <SEdit>편집</SEdit> }
         </SContainer>
     )
 }
+
+const SEdit = styled.span`
+    text-decoration: underline;
+    color: #aaa;
+    cursor: pointer;
+`
 
 const SContainer = styled.div`
     text-align: center;
