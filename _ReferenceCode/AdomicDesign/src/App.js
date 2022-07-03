@@ -1,9 +1,12 @@
 import './App.css';
+import { UserProvider } from './page-providers/UserProvider';
 import { MyRouter } from './page-router/MyRouter';
 
 function App() {
   return (
-    <MyRouter/>
+    <UserProvider>
+      <MyRouter/>
+    </UserProvider>
   );
 }
 
