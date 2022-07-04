@@ -4,23 +4,18 @@ import { AppRoutes } from '../../routers/AppRoutes';
 
 export const NavigationBar = () => {
     return (
-        <BrowserRouter>
-        <nav>
-            <SliContainer>
-                <SliItem>
-                    <Link to="/home">홈</Link>
-                </SliItem>
+            <nav>
+                <SliContainer>
+                    <SliItem>
+                        <Link to="/home">홈</Link>
+                    </SliItem>
 
-                <SliItem>
-                    <Link to="/todo">TODO</Link>
-                </SliItem>
-            </SliContainer>
-            <Outlet />
-        </nav>
-        
-        <AppRoutes />
-        
-        </BrowserRouter>
+                    <SliItem>
+                        <Link to="/todo">TODO</Link>
+                    </SliItem>
+                </SliContainer>
+                <Outlet />
+            </nav>
     )
 }
 
