@@ -3,9 +3,9 @@ import { useContext } from "react"
 import { UserContext } from './../../../../page-providers/UserProvider';
 
 export const UserIconWithName = (props) => {
-    const {img, name, isAdmin} = props
-    const context = useContext(UserContext);
-    console.log(context)
+    const {img, name} = props
+    const {userInfo} = useContext(UserContext);
+    const isAdmin = userInfo ? userInfo.isAdmin : false;
 
     return (
         <SContainer>

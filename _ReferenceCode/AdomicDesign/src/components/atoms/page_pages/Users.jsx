@@ -3,6 +3,9 @@ import { HeaderOnly } from './../page_template/HeaderOnly';
 import { SearchInput } from './../molecules/SearchInput';
 import { UserCard } from "../organisms/user/UserCard";
 import { useLocation } from 'react-router-dom';
+import { SecondaryButton } from "../button/SecondaryButton";
+import { UserContext } from './../../../page-providers/UserProvider';
+import {useContext} from 'react';
 
 const users = [...Array(10).keys()].map((val) => {
     return {
@@ -19,18 +22,26 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
-    const { state } = useLocation();
-    const isAdmin = state ? state.isAdmin : false;
+    const {userInfo, setUserInfo} = useContext(UserContext);
+    const onClickSwitch = () => {
+        if (userInfo){
+            setUserInfo({ isAdmin: !userInfo.isAdmin })
+        } else {
+            setUserInfo({ isAdmin: false })
+        }
+    };    
 
     return(
         <HeaderOnly>
             <SContainer>
                 <h2>User List</h2>
                 <SearchInput />
-
+                <br />
+                <SecondaryButton onClick={onClickSwitch}>권한변경</SecondaryButton>
+                <br />
                 <SUserArea>{
                     users.map((user) => (
-                        <UserCard key={user.id} user={user} isAdmin={isAdmin}/>
+                        <UserCard key={user.id} user={user} />
                     ))
                 }</SUserArea>
 

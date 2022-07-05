@@ -2,17 +2,22 @@ import styled from "styled-components"
 import { DefaultLayout } from './../page_template/DefaultLayout';
 import { SecondaryButton } from './../button/SecondaryButton';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from "../../../page-providers/UserProvider";
 
 // https://reactrouter.com/docs/en/v6/hooks/use-navigate
 export const Top = () => {
     const nav = useNavigate();
+    const { setUserInfo } = useContext(UserContext);
 
     function onClickAdmin() {
-        nav("/users", { state: {isAdmin: true} });
+        setUserInfo({isAdmin: true});
+        nav("/users");
     }
 
     function onClickUser() {
-        nav("/users", { state: {isAdmin: false} });
+        setUserInfo({isAdmin: false});
+        nav("/users");
     }
 
     return(
