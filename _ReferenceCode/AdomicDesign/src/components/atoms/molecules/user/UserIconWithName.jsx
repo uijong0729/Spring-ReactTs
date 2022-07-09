@@ -1,12 +1,20 @@
 import styled from "styled-components"
 import { useContext } from "react"
 import { UserContext } from './../../../../page-providers/UserProvider';
+import { useRecoilValue } from "recoil";
+import { userState } from './../../../../store/userState';
 
 export const UserIconWithName = (props) => {
     const {img, name} = props
-    const {userInfo} = useContext(UserContext);
-    const isAdmin = userInfo ? userInfo.isAdmin : false;
+    // const {userInfo} = useContext(UserContext);
 
+    // <<<< recoil 사용법 >>>>
+    // useRecoilValue : 값만 참조 (set불가)
+    // useSetRecoilState : 값 저장만 가능 (참조불가)
+    // useRecoilState : 값 참조 및 값 저장
+    const userInfo = useRecoilValue(userState);
+
+    const isAdmin = userInfo ? userInfo.isAdmin : false;
     return (
         <SContainer>
             <SImg height={160} width={160} src={img} alt="프로필" />

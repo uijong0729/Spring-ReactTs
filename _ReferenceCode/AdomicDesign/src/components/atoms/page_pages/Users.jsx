@@ -4,8 +4,10 @@ import { SearchInput } from './../molecules/SearchInput';
 import { UserCard } from "../organisms/user/UserCard";
 import { useLocation } from 'react-router-dom';
 import { SecondaryButton } from "../button/SecondaryButton";
-import { UserContext } from './../../../page-providers/UserProvider';
-import {useContext} from 'react';
+// import { UserContext } from './../../../page-providers/UserProvider';
+// import {useContext} from 'react';
+import { useRecoilState } from "recoil"
+import { userState } from './../../../store/userState';
 
 const users = [...Array(10).keys()].map((val) => {
     return {
@@ -22,7 +24,14 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
-    const {userInfo, setUserInfo} = useContext(UserContext);
+    //const {userInfo, setUserInfo} = useContext(UserContext);
+    
+    // <<<< recoil 사용법 >>>>
+    // useRecoilValue : 값만 참조 (set불가)
+    // useSetRecoilState : 값 저장만 가능 (참조불가)
+    // useRecoilState : 값 참조 및 값 저장
+    const [userInfo, setUserInfo] = useRecoilState(userState);
+
     const onClickSwitch = () => {
         if (userInfo){
             setUserInfo({ isAdmin: !userInfo.isAdmin })

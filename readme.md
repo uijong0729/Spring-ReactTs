@@ -1,3 +1,6 @@
+# 더미 데이터 
+https://jsonplaceholder.typicode.com/
+https://jsonplaceholder.typicode.com/todos
 
 # react 빌드
 ~~~
