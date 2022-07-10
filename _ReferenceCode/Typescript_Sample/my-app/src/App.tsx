@@ -1,11 +1,9 @@
-import React from 'react';
+import { Prac1 } from './prac/Prac1';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-
-      </header>
+      <Prac1 />
     </div>
   );
 }
