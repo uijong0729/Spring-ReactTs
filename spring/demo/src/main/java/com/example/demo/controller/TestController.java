@@ -5,9 +5,12 @@ import com.example.demo.Entity.TodoStatus;
 import com.example.demo.Repository.TodoRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,18 +40,29 @@ public class TestController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/getTodo")
-    public ResponseEntity<TodoEntity> getTodo() {
-        TodoEntity entity = new TodoEntity();
-        entity.setStatus(TodoStatus.COMPLETED);
-        entity.setText("Completed");
-        var result = repo.save(entity);
-        log.info("inserted entity : {}", result.getId());
+    // http://localhost:8080/getTodo/1
+    @GetMapping("/getTodo/{id}")
+    public ResponseEntity<TodoEntity> getTodo(@PathVariable Long id) {
+        Optional<TodoEntity> entity = repo.findById(id);
+        TodoEntity result = null;
 
-        return ResponseEntity.ok(entity);
+        if(entity.isPresent()){
+            log.info("get entity : {}", entity.get().getId());
+            result = entity.get();
+        } else {
+            result = new TodoEntity();
+            result.setId(id);
+            result.setStatus(TodoStatus.COMPLETED);
+            result.setText("Completed");
+            result = repo.save(result);
+            log.info("inserted entity : {}", result.getId());
+        } 
+
+        return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/getTodos")
+    // http://localhost:8080/getTodo
+    @GetMapping("/getTodo")
     public ResponseEntity<Iterable<TodoEntity>> getTodos() {
         var result = repo.findAll();
         log.info("list : {}", result);
