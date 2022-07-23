@@ -28,7 +28,7 @@ export const Prac1 = () => {
                 <button onClick={onClickFetchData}>데이터 취득</button>
                 {
                     todos.map((todo) => (
-                        <Todo key={todo.id} title={todo.title} userId={todo.userId} />
+                        <Todo key={todo.id} title={todo.title} userId={todo.userId} completed={todo.completed} />
                     ))
                 }
             </div>
