@@ -1,4 +1,4 @@
-import { BlueButton } from './../components/button/BlueButton';
+import { BlueButton } from '../components/button/BlueButton';
 
 // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
 function addTodo() {

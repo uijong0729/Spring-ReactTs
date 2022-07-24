@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routers/AppRoutes';
 import { AppProvider } from './provider/AppProvider';
 
-export const App = () => {
+function App() {
     return(
-        <div>
+        <div className='App'>
         <BrowserRouter>
             <AppProvider>
                 <Home/>
@@ -20,5 +20,8 @@ export const App = () => {
             </AppProvider>
         </BrowserRouter>
         </div>
-    )
+    );
 }
+
+
+export default App;
