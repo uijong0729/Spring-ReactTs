@@ -9,6 +9,6 @@ export const BlueButton = (props) => {
 }
 
 const SButton = styled(BaseButton)`
-        background-color: blue;
-        color: white;
+    background-color: blue;
+    color: white;
 `
