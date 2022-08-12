@@ -8,7 +8,7 @@ import { tUserApi } from "./../Types/api/User"
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useAllUsers = () => {
     // states
-    const [UserProfiles, setUserProfiles] = useState<Array<UserProfile>>([]);
+    const [userProfiles, setUserProfiles] = useState<Array<UserProfile>>([]);
     const [isLoading, setIsLoading] = useState(false); // 초기치 false
     const [isError, setIsError] = useState(false); // 초기치 false
 
@@ -27,7 +27,7 @@ export const useAllUsers = () => {
                 }));
                 // console.log(data);
                 setUserProfiles(data);
-                // console.log(UserProfiles);
+                // console.log(userProfiles);
             }).catch((err) => {
                 setIsError(true);
             }).finally(() => {
@@ -37,6 +37,6 @@ export const useAllUsers = () => {
 
     // 다른 곳에서 사용할 수 있도록 반환
     return {
-        getUsers, UserProfiles, isLoading, isError
+        getUsers, userProfiles, isLoading, isError
     };
 };

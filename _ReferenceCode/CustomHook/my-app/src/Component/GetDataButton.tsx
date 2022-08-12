@@ -4,7 +4,7 @@ import { useAllUsers } from "./../hooks/useAllUsers"
 
 export const GetDataButton: FC = () => {
     // 커스텀 훅 사용 예
-    const {getUsers, UserProfiles, isLoading, isError} = useAllUsers();
+    const {getUsers, userProfiles, isLoading, isError} = useAllUsers();
     const onClickFetchUser = () => getUsers();
 
     return (
@@ -18,7 +18,7 @@ export const GetDataButton: FC = () => {
                     <p>로딩 중</p>
                 ) : (
                     <>
-                        {UserProfiles.map((user) => (
+                        {userProfiles.map((user) => (
                             <UserCard key={user.id} user={user} />
                         ))}
                     </>
