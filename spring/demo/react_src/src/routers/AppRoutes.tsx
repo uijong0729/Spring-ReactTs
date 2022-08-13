@@ -10,6 +10,9 @@ export const AppRoutes = () => {
                 <Route path="/home" element={<Home />}/>
                 <Route path="/todo" element={<TestPage />}/>
             </Route>
+            
+            {/* 404 페이지 */}
+            <Route path='*' element={<Home/>}/>
         </Routes>
     )
 }
