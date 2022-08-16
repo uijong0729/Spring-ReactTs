@@ -25,10 +25,7 @@ public class DemoApplication {
 
 			registry.addResourceHandler("/**")
 				.addResourceLocations(
-					"classpath:/META-INF/resources/public/",
-					"classpath:/public/",
-					"classpath:/META-INF/public/",
-					"classpath:/resources/public/"
+					"classpath:/public/"
 				);
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 		}
