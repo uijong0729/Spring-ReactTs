@@ -54,6 +54,8 @@ public class TestController {
             result.setId(id);
             result.setStatus(TodoStatus.COMPLETED);
             result.setText("Completed");
+            result.setAssignedUserId("worker");
+            result.setRegistrantId("registrantId");
             result = repo.save(result);
             log.info("inserted entity : {}", result.getId());
         } 

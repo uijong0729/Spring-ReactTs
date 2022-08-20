@@ -11,7 +11,7 @@ export const TestPage = () => {
         <div>
             <BlueButton onClick={onAddTodo}>TODO 추가</BlueButton>
             {todoEntities.map((todos) => (
-                <p>{todos.id} {todos.text} {todos.text}</p>
+                <p>{todos.id} {todos.text} {todos.text} {todos.assignedUserId} {todos.registrantId}</p>
             ))}
             <BlueButton onClick={onClickLoad}>TODO 로드</BlueButton>
         </div>

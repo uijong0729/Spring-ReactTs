@@ -11,16 +11,20 @@ export const useTodos = () => {
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     const addTodo = () => {
       axios.post("http://localhost:8080/putTodo", {
-          text: 'john'
+          text: 'john',
+          assignedUserId: "self",
+          registrantId: "self"
       })
       // 취득 결과 확인
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
+        // console.log(response);
+        // console.log(response.data);
         const res :TodoEntity = {
           id: response.data.id,
           text: response.data.text,
-          status: response.data.status
+          status: response.data.status,
+          assignedUserId: response.data.assignedUserId,
+          registrantId: response.data.registrantId,
         };
         
         todoEntities.push(res);
@@ -36,12 +40,14 @@ export const useTodos = () => {
     const getAllTodos = () => {
         axios.get<Array<TodoEntity>>("http://localhost:8080/getTodo")
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
+          // console.log(response);
+          // console.log(response.data);
           const res :Array<TodoEntity> = response.data.map((todo :TodoEntity) => ({
             id: todo.id,
             text: todo.text,
-            status: todo.status
+            status: todo.status,
+            assignedUserId: todo.assignedUserId,
+            registrantId: todo.registrantId
           }));
 
           setTodoEntities(res);
