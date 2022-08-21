@@ -1,10 +1,8 @@
 import { BlueButton } from '../components/button/BlueButton';
-import axios from 'axios';
 import { useTodos } from '../hooks/useTodos';
-import { FC } from 'react';
 import { LoginInput } from '../components/input/LoginInput';
 
-export const TestPage = () => {
+export const LoginPage = () => {
     const { todoEntities, getAllTodos, addTodo} = useTodos();
     const onClickLoad = () => getAllTodos();
     const onAddTodo = () => addTodo();
@@ -16,8 +14,6 @@ export const TestPage = () => {
                 <p>{todos.id} {todos.text} {todos.text} {todos.assignedUserId} {todos.registrantId}</p>
             ))}
             <BlueButton onClick={onClickLoad}>TODO 로드</BlueButton>
-
-            <LoginInput />
         </div>
     )
 }
