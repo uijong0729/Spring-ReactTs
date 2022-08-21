@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
+import { LoginPage } from '../pages/LoginPage';
 import { TestPage } from '../pages/TestPage';
 
 export const AppRoutes = () => {
@@ -9,7 +10,7 @@ export const AppRoutes = () => {
                 {/* Home Page */}
                 <Route path="/home" element={<Home />}/>
                 <Route path="/todo" element={<TestPage />}/>
-                <Route path="/login" element={<TestPage />}/>
+                <Route path="/login" element={<LoginPage />}/>
             </Route>
             
             {/* 404 페이지 */}

@@ -13,6 +13,10 @@ export const NavigationBar = () => {
                     <SliItem>
                         <Link to="/todo">TODO</Link>
                     </SliItem>
+
+                    <SliItem>
+                        <Link to="/login">Login</Link>
+                    </SliItem>
                 </SliContainer>
                 <Outlet />
             </nav>

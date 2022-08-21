@@ -16,8 +16,6 @@ export const TestPage = () => {
                 <p>{todos.id} {todos.text} {todos.text} {todos.assignedUserId} {todos.registrantId}</p>
             ))}
             <BlueButton onClick={onClickLoad}>TODO 로드</BlueButton>
-
-            <LoginInput />
         </div>
     )
 }
