@@ -7,14 +7,14 @@ export const LoginInput = () => {
             <dl>
                 <dt>ID</dt>
                 <dd>
-                    <input type="text" />
+                    <input id="id" type="text" />
                 </dd>
                 <dt>PASSWORD</dt>
                 <dd>
-                    <input type="password" />
+                    <input id="pass" type="password" />
                 </dd>
             </dl>
-            <Button variant="primary">SIGN IN</Button>
+            <Button type="submit" variant="primary">SIGN IN</Button>
         </form>
     )
 }
