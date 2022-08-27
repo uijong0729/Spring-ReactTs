@@ -11,8 +11,7 @@ cd D:\code\javascript\react\start_react\spring\demo\react_src; npm run-script bu
 
 # 화면만 대충 확인
 ~~~
-cd D:\code\javascript\react\start_react\spring\demo\react_src
-npm start
+cd D:\code\javascript\react\start_react\spring\demo\react_src; npm start;
 ~~~
 
 # 스프링 실행
@@ -30,3 +29,6 @@ http://localhost:8080/
 
 # 한꺼번에
 cd D:\code\javascript\react\start_react\spring\demo\react_src; npm run-script build; cd D:\code\javascript\react\start_react\spring\demo; ./gradlew bootRun
+
+# 부트만 실행
+cd D:\code\javascript\react\start_react\spring\demo; ./gradlew bootRun

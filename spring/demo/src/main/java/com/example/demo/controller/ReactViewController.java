@@ -21,6 +21,11 @@ public class ReactViewController {
         return "forward:/";
     }
 
+    @RequestMapping("/login")
+    public String login() {
+        return "forward:/";
+    }
+
     // @RequestMapping("/error")
     // public String error(HttpServletRequest request) {
     //     Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
