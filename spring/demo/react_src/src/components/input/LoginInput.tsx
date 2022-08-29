@@ -1,11 +1,13 @@
 import { UserEntity } from "../../hooks/api/UserEntity";
 import { useLogin } from "../../hooks/useLogin";
 import { GreenButton } from "../button/GreenButton";
+import { BlueButton } from "../button/BlueButton";
+import { ReactElement } from "react";
 
 export const LoginInput = () => {
     const { userEntity, goLogin } = useLogin();
-    // const btLogin = document.getElementById('btLogin') as HTMLButtonElement
-    const onClickLogin = () => {
+    
+    const onClickLogin = () :void => {
         const id = document.getElementById('id') as HTMLInputElement;
         const pass = document.getElementById('pass') as HTMLInputElement;
 
@@ -16,7 +18,11 @@ export const LoginInput = () => {
         
         goLogin(entity);
     }
-    // btLogin?.addEventListener('click', onClickLogin);
+
+    const onClickSignUp = () :void  => {
+        console.log('sign up');
+    }
+    
 
     return(
         <>
@@ -32,6 +38,7 @@ export const LoginInput = () => {
             </dl>
             
             <GreenButton onClick={onClickLogin}>SIGN IN</GreenButton>
+            <BlueButton onClick={onClickSignUp}>SIGN UP</BlueButton>
         </>
     )
 }

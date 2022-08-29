@@ -1,7 +1,6 @@
-import { FC } from "react"
 import styled from "styled-components"
 
-export const BaseButton :FC = styled.button`
+export const BaseButton = styled.button`
     border-radius: 16px;
     border: 1px solid black;
     padding: 4px 16px;

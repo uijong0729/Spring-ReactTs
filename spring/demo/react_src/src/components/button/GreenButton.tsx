@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { BaseButton } from "./BaseButton";
+import { BtProps } from "./types/ButtonType";
 
-export const GreenButton = (props) => {
+export const GreenButton = (props :BtProps) => {
     const { children, onClick } = props;
     return(
         <SButton onClick={onClick}>{children}</SButton>
