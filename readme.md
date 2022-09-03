@@ -30,5 +30,8 @@ http://localhost:8080/
 # 한꺼번에
 cd D:\code\javascript\react\start_react\spring\demo\react_src; npm run-script build; cd D:\code\javascript\react\start_react\spring\demo; ./gradlew bootRun
 
+# 빌드만 
+cd D:\code\javascript\react\start_react\spring\demo; ./gradlew build
+
 # 부트만 실행
 cd D:\code\javascript\react\start_react\spring\demo; ./gradlew bootRun

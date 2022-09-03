@@ -5,6 +5,8 @@ import { BlueButton } from "../button/BlueButton";
 import { ReactElement } from "react";
 
 export const SignUpInput = () => {
+    const { addUser } = useLogin();
+
     const onClickSignUp = () :void  => {
         const id = document.getElementById('id') as HTMLInputElement;
         const pass = document.getElementById('pass') as HTMLInputElement;
@@ -13,6 +15,8 @@ export const SignUpInput = () => {
             id: id.value,
             pass: pass.value
         }
+
+        addUser(entity);
     }
     
 

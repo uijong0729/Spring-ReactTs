@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     UserRepository repo;
 
-    @PostMapping(value = "/goLogin", 
+    @PostMapping(value = "/login", 
         consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserParam> login(@RequestBody UserParam param) {
         
@@ -30,12 +30,12 @@ public class UserController {
     }
 
     @PostMapping(value = "/signup", 
-    consumes = MediaType.APPLICATION_JSON_VALUE)
+    consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResponseEntity<UserEntity> signup(@RequestBody UserParam param) {
-    
-    log.debug("id = {}, pass = {}", param.id(), param.pass());
-    var result = repo.save(new UserEntity(param.id(), param.pass()));
-    log.debug("save : {}, {}, {}", result.getUid(), result.getId(), result.getPass());
-    return ResponseEntity.ok(result);
-}
+        log.debug("id = {}, pass = {}", param.id(), param.pass());
+        var result = repo.save(new UserEntity(param.id(), param.pass()));
+        log.debug("save : {}, {}, {}", result.getUid(), result.getId(), result.getPass());
+        
+        return ResponseEntity.ok(result);
+    }
 }

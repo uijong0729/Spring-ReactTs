@@ -10,7 +10,7 @@ export const useLogin = () => {
     
     // 로그인
     const goLogin = (props: UserEntity) => {
-      axios.post<UserEntity>(`${env}/goLogin`, {
+      axios.post<UserEntity>(`${env}/login`, {
           id: props.id,
           pass: props.pass
       }, {
@@ -34,12 +34,14 @@ export const useLogin = () => {
 
     // 회원가입
     const addUser = (param :UserEntity) :void => {
-      axios.post<UserEntity>(`${env}/signup`, {
-          id: param.id,
-          pass: param.pass
-      }, {
+      const formData = new FormData();
+      formData.append('id', param.id)
+      formData.append('pass', param.pass)
+
+      axios.post<UserEntity>(`${env}/signup`, formData, {
         headers: {
-            'Content-Type': 'application/json'
+            //'Content-Type': 'application/json'
+            "Content-Type": "multipart/form-data"
         }
       })
       .then((response) => {
@@ -53,6 +55,6 @@ export const useLogin = () => {
 
     // 다른 곳에서 사용할 수 있도록 반환
     return {
-      userEntity, goLogin
+      userEntity, goLogin, addUser
     };
 };
