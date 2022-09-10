@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,6 +27,10 @@ public class DemoApplication {
 				.addResourceLocations(
 					"classpath:/public/"
 				);
+			registry.addResourceHandler("/index.html")
+				.addResourceLocations(
+					"classpath:/public/index.html"
+				);
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 		}
 	}
@@ -33,19 +38,15 @@ public class DemoApplication {
 	@EnableWebSecurity
 	class SecurityConfig {
 		public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-			http.formLogin(login -> login
-				.loginProcessingUrl("/login")
-				.loginPage("/login")
-				.defaultSuccessUrl("/")
+			http.csrf().disable().authorizeRequests()
+				.antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico")
 				.permitAll()
-			).logout(logout -> logout
-					.logoutSuccessUrl("/")
-			).authorizeHttpRequests(authz -> authz
-					.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-					.mvcMatchers("/").permitAll()
-					.anyRequest().authenticated()
-			);
-			
+				.anyRequest().authenticated()
+				.and()
+				.formLogin().loginPage("/index.html")
+				.loginProcessingUrl("/login")
+				.defaultSuccessUrl("homepage.html", true)
+				.failureUrl("/index.html?error=true");
 			return http.build();
 		}
 	}
