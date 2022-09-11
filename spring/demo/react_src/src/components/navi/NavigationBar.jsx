@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link, Outlet, BrowserRouter } from "react-router-dom"
-import { AppRoutes } from '../../routers/AppRoutes';
 
 export const NavigationBar = () => {
     return (
+        
             <nav>
                 <SliContainer>
                     <SliItem>
@@ -17,11 +17,22 @@ export const NavigationBar = () => {
                     <SliItem>
                         <Link to="/login">Login</Link>
                     </SliItem>
+
+                    <SliItem>
+                        <Link to="/logout">Logout</Link>
+                    </SliItem>
+
                 </SliContainer>
+
                 <Outlet />
             </nav>
+        
     )
 }
+
+const NoButton = styled.button`
+    all: unset;
+`
 
 const SliItem = styled.li`
     > * {
@@ -37,6 +48,8 @@ const SliItem = styled.li`
             cursor: pointer;
             opacity: 0.8;
         }
+        text-align: center;
+        vertical-align: middle;
     }
 `
 

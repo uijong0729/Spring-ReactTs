@@ -14,7 +14,6 @@ function App() {
             <AppProvider>
                 
             <Header />
-
                 <BodyContainer>
                     <AppRoutes />
                 </BodyContainer>

@@ -6,7 +6,6 @@ export const Home :FC = () => {
     const context = useContext(AppContext);
     console.log(context)
 
-
     return (
         <div>
             <h3>홈 화면</h3>
