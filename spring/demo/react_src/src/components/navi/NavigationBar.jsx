@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { Link, Outlet, BrowserRouter } from "react-router-dom"
+import { useLogin } from '../../hooks/useLogin';
+import { useLoginState } from '../../provider/AppProvider';
 
 export const NavigationBar = () => {
+    const context = useLoginState();
+    
+
     return (
         
             <nav>
@@ -14,13 +19,24 @@ export const NavigationBar = () => {
                         <Link to="/todo">TODO</Link>
                     </SliItem>
 
-                    <SliItem>
+                    {
+                        !context.isLogin ? 
+                        (<SliItem>
+                            <Link to="/login">Login</Link>
+                        </SliItem>)
+                        :(
+                        <SliItem>
+                            <Link to="/logout">{context.id} 님 Logout</Link>
+                        </SliItem>
+                        )
+                    }
+                    {/* <SliItem>
                         <Link to="/login">Login</Link>
                     </SliItem>
 
                     <SliItem>
                         <Link to="/logout">Logout</Link>
-                    </SliItem>
+                    </SliItem> */}
 
                 </SliContainer>
 
