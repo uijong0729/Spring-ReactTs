@@ -54,12 +54,12 @@ export const AppProvider = (props :Props) => {
 
 export function useLoginState() {
     const state = useContext(LoginContext);
-    if (!state) throw new Error('Cannot find SampleProvider'); // 유효하지 않을땐 에러를 발생
+    if (!state) throw new Error('Cannot find Provider'); // 유효하지 않을땐 에러를 발생
     return state;
   }
   
   export function useLoginStateDispatch() {
     const dispatch = useContext(LoginDispatchContext);
-    if (!dispatch) throw new Error('Cannot find SampleProvider'); // 유효하지 않을땐 에러를 발생
+    if (!dispatch) throw new Error('Cannot find Provider'); // 유효하지 않을땐 에러를 발생
     return dispatch;
   }
