@@ -1,7 +1,9 @@
 // 커스텀 훅은 접두어에 use를 붙이는 것이 관례
 import axios from "axios";
 import { FC, useState } from "react";
+import { Constants } from "../utils/Constants";
 import { TodoEntity } from "./api/TodoEntity";
+
 
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useTodos = () => {
@@ -9,7 +11,7 @@ export const useTodos = () => {
         
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     const addTodo = () => {
-      axios.post("http://localhost:8080/putTodo", {
+      axios.post(`${Constants.ENV}/putTodo`, {
           text: 'john',
           assignedUserId: "self",
           registrantId: "self"
@@ -37,7 +39,7 @@ export const useTodos = () => {
 
 
     const getAllTodos = () => {
-        axios.get<Array<TodoEntity>>("http://localhost:8080/getTodo")
+        axios.get<Array<TodoEntity>>(`${Constants.ENV}/getTodo`)
         .then((response) => {
           const res :Array<TodoEntity> = response.data.map((todo :TodoEntity) => ({
             id: todo.id,

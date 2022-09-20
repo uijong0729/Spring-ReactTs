@@ -3,14 +3,13 @@ import axios from "axios";
 import { FC, useState, useContext } from "react";
 import { LoginContext, LoginDispatchContext, useLoginState, useLoginStateDispatch } from "../provider/AppProvider";
 import { UserEntity } from "./api/UserEntity";
-
+import { Constants } from "../utils/Constants";
 
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useLogin = () => {
     const context = useLoginState();
     const dispatch = useLoginStateDispatch();
     const [userEntity, setUserEntity] = useState<UserEntity>();
-    const env = "http://localhost:8080";
     const setLoginInfo = (param:boolean) => dispatch({type: 0, isLogin: param});
 
 
@@ -20,7 +19,7 @@ export const useLogin = () => {
       console.log(context?.isLogin);
 
       // post
-      axios.post<UserEntity>(`${env}/login`, {
+      axios.post<UserEntity>(`${Constants.ENV}/login`, {
           id: props.id,
           pass: props.pass
       }, {
@@ -50,7 +49,7 @@ export const useLogin = () => {
       formData.append('id', param.id)
       formData.append('pass', param.pass)
 
-      axios.post<UserEntity>(`${env}/signup`, formData, {
+      axios.post<UserEntity>(`${Constants.ENV}/signup`, formData, {
         headers: {
             //'Content-Type': 'application/json'
             "Content-Type": "multipart/form-data"
