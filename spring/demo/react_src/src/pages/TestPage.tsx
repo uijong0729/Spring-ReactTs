@@ -1,23 +1,15 @@
-import { BlueButton } from '../components/button/BlueButton';
-import axios from 'axios';
+
 import { useTodos } from '../hooks/useTodos';
-import { FC } from 'react';
-import { LoginInput } from '../components/input/LoginInput';
 import { FormDialog } from '../components/dialog/FormDialog';
 
 export const TestPage = () => {
-    const { todoEntities, getAllTodos, addTodo} = useTodos();
-    //const onClickLoad = () => getAllTodos();
-    const onAddTodo = () => addTodo();
-
+    const { todoEntities, getAllTodos, addTodo} = useTodos();    
     return (
         <div>
-            <FormDialog />
-            <BlueButton onClick={onAddTodo}>TODO 추가</BlueButton>
+            <FormDialog title="ToDo" contents="contents" buttonName="ToDo 추가" onSubmit={addTodo} />
             {todoEntities.map((todos) => (
                 <p>{todos.id} {todos.text} {todos.text} {todos.assignedUserId} {todos.registrantId}</p>
             ))}
-            {/* <BlueButton onClick={onClickLoad}>TODO 로드</BlueButton> */}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { BaseButton } from "./BaseButton";
-import { BtProps } from "./types/ButtonType";
+import { BtProps } from "../types/ComponentType";
 
 export const BlueButton = (props :BtProps) => {
     const { children, onClick } = props;
