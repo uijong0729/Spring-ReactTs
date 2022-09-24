@@ -6,11 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { DialProps } from "../types/ComponentType";
+import { DialogProps, DialProps } from "../types/ComponentType";
 
 export const BaseDialog = (props :DialProps) => {
   const [open, setOpen] = React.useState(false);
-  const { onSubmit, title, contents, buttonName, field  } = props;
+  const { onSubmit, title, contents, buttonName, field } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,7 +41,7 @@ export const BaseDialog = (props :DialProps) => {
             autoFocus
             margin={field.margin}
             id={field.id}
-            label={field.label}
+            placeholder={field.placeholder}
             type={field.type}
             fullWidth
             variant={field.variant}
