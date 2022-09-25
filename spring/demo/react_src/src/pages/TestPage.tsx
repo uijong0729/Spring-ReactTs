@@ -1,15 +1,23 @@
 
 import { useTodos } from '../hooks/useTodos';
-import { FormDialog } from '../components/dialog/FormDialog';
+import { TodoDialog } from '../components/dialog/TodoDialog';
+import { useState, useEffect } from 'react'
 
 export const TestPage = () => {
-    const { todoEntities, getAllTodos, addTodo} = useTodos();    
+    const { todoEntities, getAllTodos } = useTodos();
+    useEffect(() => {
+        const fetchData = async () => {
+            getAllTodos();
+        }
+        fetchData();
+     }, [])
+
     return (
-        <div>
-            <FormDialog title="ToDo" contents="contents" buttonName="ToDo 추가" onSubmit={addTodo} />
+        <>
+            <TodoDialog />
             {todoEntities.map((todos) => (
                 <p>{todos.id} {todos.text} {todos.text} {todos.assignedUserId} {todos.registrantId}</p>
             ))}
-        </div>
+        </>
     )
 }

@@ -32,11 +32,8 @@ public class TestController {
     @PostMapping(value = "/putTodo", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TodoEntity> putTodo(@RequestBody TodoEntity todo) {
         log.info("posted entity : {}", todo.toString());
-
-        var result = repo.save(todo);
-        log.info("inserted entity : {}", result.toString());
-
-        return ResponseEntity.ok(result);
+        repo.save(todo);
+        return ResponseEntity.ok(repo.save(todo));
     }
 
     // http://localhost:8080/getTodo/1

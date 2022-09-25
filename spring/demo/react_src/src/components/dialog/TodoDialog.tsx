@@ -6,11 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { DialogProps, DialProps } from "../types/ComponentType";
+import { useTodos } from '../../hooks/useTodos';
+import styled from 'styled-components';
 
-export const BaseDialog = (props :DialProps) => {
+
+export const TodoDialog = () => {
   const [open, setOpen] = React.useState(false);
-  const { onSubmit, title, contents, buttonName, field } = props;
+  const { addTodo, getAllTodos } = useTodos();   
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -21,30 +23,33 @@ export const BaseDialog = (props :DialProps) => {
   };
 
   const handleSubmit = () => {
-    onSubmit();
+    const inputValue :string = (document.getElementById("todoText") as HTMLInputElement).value;
+    addTodo(inputValue).then(() => {
+      window.location.reload();
+    });
     setOpen(false);
   };
 
   return (
-    <div>
+    <DialogContainer>
       <Button variant="outlined" onClick={handleClickOpen}>
-        {buttonName}
+        Todo추가 
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>{title}</DialogTitle>
+        <DialogTitle>Todo</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {contents}
+            Contents
           </DialogContentText>
                     
           <TextField
             autoFocus
-            margin={field.margin}
-            id={field.id}
-            placeholder={field.placeholder}
-            type={field.type}
+            margin="dense"
+            id="todoText"
+            placeholder="Todo를 입력"
+            type="text"
             fullWidth
-            variant={field.variant}
+            variant="standard"
           />
         </DialogContent>
         <DialogActions>
@@ -52,6 +57,10 @@ export const BaseDialog = (props :DialProps) => {
           <Button onClick={handleSubmit}>OK</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </DialogContainer>
   );
 }
+
+const DialogContainer = styled.div`
+    margin: 12px;
+`
