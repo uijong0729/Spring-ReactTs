@@ -11,25 +11,33 @@ export default function BasicCard(props: TodoEntity) {
   const { text, status, registrantId, assignedUserId } = props;
 
   return (
-        <Card sx={{ minWidth: 255, margin: '5px', padding: '18px', boxShadow: '5px 7px #888888', border: '1px solid' }}>
-        <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {status}
-            </Typography>
+    <Card sx={
+      {
+        minWidth: 350,
+        padding: '18px', 
+        margin: '15px 8px 15px 8px',
+        boxShadow: '5px 7px #888888', 
+        border: '1px solid'
+      }
+    }>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {status}
+        </Typography>
 
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {text}
-            </Typography>
-            <Typography variant="body2">
-            {registrantId}
-            </Typography>
-            <Typography variant="body2">
-            {assignedUserId}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button size="small">완료하기</Button>
-        </CardActions>
-        </Card>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {text}
+        </Typography>
+        <Typography variant="body2">
+          {registrantId}
+        </Typography>
+        <Typography variant="body2">
+          {assignedUserId}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">완료하기</Button>
+      </CardActions>
+    </Card>
   );
 }

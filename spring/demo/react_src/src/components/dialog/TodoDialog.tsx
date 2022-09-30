@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 export const TodoDialog = () => {
   const [open, setOpen] = React.useState(false);
-  const { addTodo, getAllTodos } = useTodos();   
+  const { addTodo, getAllTodos } = useTodos();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,7 +23,7 @@ export const TodoDialog = () => {
   };
 
   const handleSubmit = () => {
-    const inputValue :string = (document.getElementById("todoText") as HTMLInputElement).value;
+    const inputValue: string = (document.getElementById("todoText") as HTMLInputElement).value;
     addTodo(inputValue).then(() => {
       window.location.reload();
     });
@@ -33,7 +33,7 @@ export const TodoDialog = () => {
   return (
     <DialogContainer>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Todo추가 
+        Todo추가
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Todo</DialogTitle>
@@ -41,7 +41,14 @@ export const TodoDialog = () => {
           <DialogContentText>
             Contents
           </DialogContentText>
-                    
+          <TextField
+            autoFocus
+            margin="dense"
+            id="todoDeadline"
+            type="date"
+            fullWidth
+            variant="standard"
+          />
           <TextField
             autoFocus
             margin="dense"
@@ -54,7 +61,7 @@ export const TodoDialog = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>OK</Button>
+          <Button id="id_add" onClick={handleSubmit}>OK</Button>
         </DialogActions>
       </Dialog>
     </DialogContainer>
