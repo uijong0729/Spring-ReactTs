@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
