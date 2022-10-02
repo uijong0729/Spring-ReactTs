@@ -23,8 +23,9 @@ export const TodoDialog = () => {
   };
 
   const handleSubmit = () => {
+    const deadline: Date = new Date((document.getElementById("todoDeadline") as HTMLInputElement).value);
     const inputValue: string = (document.getElementById("todoText") as HTMLInputElement).value;
-    addTodo(inputValue).then(() => {
+    addTodo(inputValue, deadline).then(() => {
       window.location.reload();
     });
     setOpen(false);
@@ -47,6 +48,7 @@ export const TodoDialog = () => {
             id="todoDeadline"
             type="date"
             fullWidth
+            required
             variant="standard"
           />
           <TextField
@@ -56,6 +58,7 @@ export const TodoDialog = () => {
             placeholder="Todo를 입력"
             type="text"
             fullWidth
+            required
             variant="standard"
           />
         </DialogContent>

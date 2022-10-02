@@ -9,6 +9,7 @@ export type TodoEntity = {
     id: number;
     text: string;
     status: string;
+    deadline: Date;
     registrantId: String;         // 등록자
     assignedUserId: String;       // 할당대상
 };

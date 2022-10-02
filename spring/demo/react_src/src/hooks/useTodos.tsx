@@ -9,9 +9,10 @@ export const useTodos = () => {
     const [todoEntities, setTodoEntities] = useState<Array<TodoEntity>>([]);
 
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
-    const addTodo = async (text :string) => {
+    const addTodo = async (text :string, deadline :Date) => {
       await axios.post(`${Constants.ENV}/putTodo`, {
           text: text,
+          deadline: deadline,
           assignedUserId: "self",
           registrantId: "self"
       })
@@ -40,6 +41,7 @@ export const useTodos = () => {
               id: todo.id,
               text: todo.text,
               status: todo.status,
+              deadline: todo.deadline,
               assignedUserId: todo.assignedUserId,
               registrantId: todo.registrantId
             }));

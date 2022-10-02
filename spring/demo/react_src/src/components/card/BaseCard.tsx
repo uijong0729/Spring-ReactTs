@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography';
 import { TodoEntity } from '../../hooks/api/TodoEntity';
 
 export default function BasicCard(props: TodoEntity) {
-  const { text, status, registrantId, assignedUserId } = props;
-
+  const { text, status, registrantId, assignedUserId, deadline } = props;
+  const newDeadline = deadline.toString().substring(0, 10)
   return (
     <Card sx={
       {
@@ -22,7 +22,7 @@ export default function BasicCard(props: TodoEntity) {
     }>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {status}
+          {`마감일 : ${newDeadline} / 상태 : ${status}`}
         </Typography>
 
         <Typography sx={{ mb: 1.5 }} color="text.secondary">

@@ -23,6 +23,7 @@ export const TestPage = () => {
                         assignedUserId={todos.assignedUserId} 
                         text={todos.text} 
                         registrantId={todos.registrantId}
+                        deadline={todos.deadline}
                         id={todos.id}
                         status={todos.status} />
                 ))}
