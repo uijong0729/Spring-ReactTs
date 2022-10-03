@@ -66,4 +66,24 @@ public class TestController {
         log.info("list : {}", result);
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/deleteTodo/{id}")
+    public ResponseEntity<String> deleteTodo(@PathVariable Long id) {
+        repo.deleteById(id);
+        log.info("deleted : {}", id);
+        return ResponseEntity.ok("deleted");
+    }
+
+    @GetMapping("/completeTodo/{id}")
+    public ResponseEntity<String> completeTodo(@PathVariable Long id) {
+        Optional<TodoEntity> entity = repo.findById(id);
+        if (entity.isPresent()) {
+            var todo = entity.get();
+            todo.setStatus(TodoStatus.COMPLETED);
+            repo.save(todo);
+            return ResponseEntity.ok("ok");
+        } else {
+            return ResponseEntity.ok("fail");
+        }        
+    }
 }

@@ -6,10 +6,18 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TodoEntity } from '../../hooks/api/TodoEntity';
+import { useTodos } from '../../hooks/useTodos';
 
 export default function BasicCard(props: TodoEntity) {
-  const { text, status, registrantId, assignedUserId, deadline } = props;
-  const newDeadline = deadline.toString().substring(0, 10)
+  const { id, text, status, registrantId, assignedUserId, deadline } = props;
+  const newDeadline = deadline?.toString().substring(0, 10)
+  const { deleteTodo, completeTodo } = useTodos();
+  const sCompleteTodo = () => {
+    completeTodo(id).then(() => {
+      window.location.reload();
+    });
+  }
+
   return (
     <Card sx={
       {
@@ -36,7 +44,7 @@ export default function BasicCard(props: TodoEntity) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">완료하기</Button>
+        <Button onClick={sCompleteTodo} size="small">완료하기</Button>
       </CardActions>
     </Card>
   );

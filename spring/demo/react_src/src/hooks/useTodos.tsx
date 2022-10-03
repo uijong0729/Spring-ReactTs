@@ -50,11 +50,37 @@ export const useTodos = () => {
         .catch((error)=>{
             console.log(error);
         })
- 
     }
+
+    // @GetMapping("/deleteTodo/{id}")
+    const deleteTodo = async (id:number) => {
+        await axios({
+          url: `${Constants.ENV}/deleteTodo/${id}`,
+          method: 'GET'
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error)=>{
+          console.log(error);
+        })
+    }
+
+    const completeTodo = async (id:number) => {
+      await axios({
+        url: `${Constants.ENV}/completeTodo/${id}`,
+        method: 'GET'
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
+  }
 
     // 다른 곳에서 사용할 수 있도록 반환
     return {
-      getAllTodos, todoEntities, addTodo, setTodoEntities
+      getAllTodos, todoEntities, addTodo, setTodoEntities, deleteTodo, completeTodo
     };
 };
