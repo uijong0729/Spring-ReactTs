@@ -13,7 +13,7 @@ import styled from 'styled-components';
 export const TodoDialog = () => {
   const [open, setOpen] = React.useState(false);
   const { addTodo, getAllTodos } = useTodos();
-
+  
   const handleClickOpen = () => {
     setOpen(true);
   };

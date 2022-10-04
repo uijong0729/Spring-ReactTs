@@ -12,10 +12,20 @@ export default function BasicCard(props: TodoEntity) {
   const { id, text, status, registrantId, assignedUserId, deadline } = props;
   const newDeadline = deadline?.toString().substring(0, 10)
   const { deleteTodo, completeTodo } = useTodos();
+  // 완료 
   const sCompleteTodo = () => {
     completeTodo(id).then(() => {
       window.location.reload();
     });
+  }
+  // 삭제
+  const sDeleteTodo = () => {
+    const ok :boolean = window.confirm('삭제 하시겠습니까?');
+    if (ok) {
+      deleteTodo(id).then(() => {
+        window.location.reload();
+      });
+    }
   }
 
   return (
@@ -45,6 +55,7 @@ export default function BasicCard(props: TodoEntity) {
       </CardContent>
       <CardActions>
         <Button onClick={sCompleteTodo} size="small">완료하기</Button>
+        <Button onClick={sDeleteTodo} size="small">삭제</Button>
       </CardActions>
     </Card>
   );
