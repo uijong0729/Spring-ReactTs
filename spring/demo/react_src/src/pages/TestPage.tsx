@@ -4,6 +4,7 @@ import { TodoDialog } from '../components/dialog/TodoDialog';
 import { useState, useEffect } from 'react'
 import BasicCard from '../components/card/BaseCard';
 import styled from 'styled-components';
+import { TodoStatus } from '../hooks/api/TodoEntity';
 
 export const TestPage = () => {
     const { todoEntities, getAllTodos } = useTodos();
@@ -18,15 +19,19 @@ export const TestPage = () => {
         <>
             <TodoDialog />
             <CardContainer className="card_contianer">
-                {todoEntities.map((todos) => (
-                    <BasicCard 
-                        assignedUserId={todos.assignedUserId} 
-                        text={todos.text} 
-                        registrantId={todos.registrantId}
-                        deadline={todos.deadline}
-                        id={todos.id}
-                        status={todos.status} />
-                ))}
+                {
+                    todoEntities.filter((todos) => {
+                        return todos.status == TodoStatus.IMCOMPLETED
+                    }).map((todos) => (
+                        <BasicCard 
+                            assignedUserId={todos.assignedUserId} 
+                            text={todos.text} 
+                            registrantId={todos.registrantId}
+                            deadline={todos.deadline}
+                            id={todos.id}
+                            status={todos.status} />
+                    ))
+                }
             </CardContainer>
         </>
     )

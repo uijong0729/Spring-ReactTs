@@ -13,7 +13,8 @@ export const LoginInput = () => {
 
         const entity :UserEntity = {
             id: id.value,
-            pass: pass.value
+            pass: pass.value,
+            groupId: ''
         }
         
         goLogin(entity);

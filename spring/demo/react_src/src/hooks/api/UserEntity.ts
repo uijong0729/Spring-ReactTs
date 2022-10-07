@@ -7,6 +7,6 @@
 
 export type UserEntity = {
     id: string;
-    groupId: string;
+    groupId?: string;
     pass: string;
 };

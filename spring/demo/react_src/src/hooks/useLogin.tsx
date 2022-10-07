@@ -31,7 +31,8 @@ export const useLogin = () => {
       .then((response) => {
         const res :UserEntity = {
           id: response.data.id,
-          pass: response.data.pass
+          pass: response.data.pass,
+          groupId: ''
         };
         setUserEntity(res);
         //setIsLogin(true);
