@@ -1,7 +1,7 @@
 package com.example.demo.param;
 
-public record UserParam(String id, String pass) {
-       
+public record UserParam(String id, String pass, String groupId) {
+    
     @Override
     public String toString() {
         return String.format(

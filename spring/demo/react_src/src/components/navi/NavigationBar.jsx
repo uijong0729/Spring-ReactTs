@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import { Link, Outlet, BrowserRouter } from "react-router-dom"
+import { Link, Outlet, BrowserRouter, useNavigate } from "react-router-dom"
 import { useLogin } from '../../hooks/useLogin';
 import { useLoginState } from '../../provider/AppProvider';
 
 export const NavigationBar = () => {
     const context = useLoginState();
-    
+    const navigate = useNavigate();
+
+    const logout = () => {
+        context.isLogin = false;
+        navigate("/");
+    }
 
     return (
         
@@ -26,7 +31,7 @@ export const NavigationBar = () => {
                         </SliItem>)
                         :(
                         <SliItem>
-                            <Link to="/logout">{context.id} 님 Logout</Link>
+                            <Link onClick={logout} to="/logout">{context.id} 님 Logout</Link>
                         </SliItem>
                         )
                     }

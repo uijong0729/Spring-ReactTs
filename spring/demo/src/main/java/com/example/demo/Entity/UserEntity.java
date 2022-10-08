@@ -1,6 +1,5 @@
 package com.example.demo.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,14 +11,13 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 public class UserEntity {
     @Id @GeneratedValue
     private long uid;
     @Column(name = "id")
-    private String id;
+    private String userId;
     @Column(name = "pass")
-    private String pass;
+    private String userPass;
     @Column(name = "groupId")
     private String groupId;
 
@@ -28,13 +26,19 @@ public class UserEntity {
     }
 
     public UserEntity(String id, String pass) {
-        this.id = id;
-        this.pass = pass;
+        this.userId = id;
+        this.userPass = pass;
         this.groupId = ""; // 개인용 ToDo
+    }
+
+    public UserEntity(String id, String pass, String groupId) {
+        this.userId = id;
+        this.userPass = pass;
+        this.groupId = groupId; // 개인용 ToDo
     }
 
     @Override
     public String toString() {
-        return this.id;
+        return this.userId;
     }
 }

@@ -11,7 +11,7 @@ export const AppRoutes = () => {
                 <Route path="/home" element={<Home />}/>
                 <Route path="/todo" element={<TestPage />}/>
                 <Route path="/login" element={<LoginPage />}/>
-                <Route path="/logout" element={<Navigate to="/home"/>}/>
+                <Route path="/logout" element={<Navigate replace to="/"/>}/>
             </Route>
             
             {/* 404 페이지 */}

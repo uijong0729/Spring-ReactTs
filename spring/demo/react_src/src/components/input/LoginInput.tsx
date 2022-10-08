@@ -3,6 +3,7 @@ import { useLogin } from "../../hooks/useLogin";
 import { GreenButton } from "../button/GreenButton";
 import { BlueButton } from "../button/BlueButton";
 import { ReactElement } from "react";
+import { UserRegistDialog } from "../dialog/UserRegistDialog";
 
 export const LoginInput = () => {
     const { userEntity, goLogin } = useLogin();
@@ -22,6 +23,7 @@ export const LoginInput = () => {
 
     const onClickSignUp = () :void  => {
         console.log('sign up');
+        
     }
     
 
@@ -38,8 +40,9 @@ export const LoginInput = () => {
                 </dd>
             </dl>
             
-            <GreenButton onClick={onClickLogin}>SIGN IN</GreenButton>
-            <BlueButton onClick={onClickSignUp}>SIGN UP</BlueButton>
+            <GreenButton onClick={onClickLogin}>LOGIN</GreenButton>
+            <UserRegistDialog />
+            {/* <BlueButton onClick={onClickSignUp}>SIGN UP</BlueButton> */}
         </>
     )
 }

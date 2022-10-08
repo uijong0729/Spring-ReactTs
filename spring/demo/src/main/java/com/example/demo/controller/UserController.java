@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Entity.UserEntity;
-import com.example.demo.Repository.UserRepository;
 import com.example.demo.param.UserParam;
+import com.example.demo.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,25 +17,33 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class UserController {
 
+    UserService service;
+
     @Autowired
-    UserRepository repo;
+    public UserController(UserService service) {
+        this.service = service;
+    }
 
     @PostMapping(value = "/login", 
         consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserParam> login(@RequestBody UserParam param) {
-        
         log.debug("id = {}, pass = {}", param.id(), param.pass());
-
+        var result = service.login(param);
+        if (result != null) {
+            log.debug("login = {}", result.toString());
+        } else {
+            log.debug("login = {}", "null");
+        }
+        
         return ResponseEntity.ok(param);
     }
 
     @PostMapping(value = "/signup", 
-    consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserEntity> signup(@RequestBody UserParam param) {
         log.debug("id = {}, pass = {}", param.id(), param.pass());
-        var result = repo.save(new UserEntity(param.id(), param.pass()));
-        log.debug("save : {}, {}, {}", result.getUid(), result.getId(), result.getPass());
-        
+        var result = service.signup(param);
+        log.debug("save : {}, {}, {}", result.getUid(), result.getUserId(), result.getUserPass());
         return ResponseEntity.ok(result);
     }
 
