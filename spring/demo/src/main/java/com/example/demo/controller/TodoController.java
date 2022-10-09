@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.Entity.TodoEntity;
 import com.example.demo.Entity.TodoStatus;
 import com.example.demo.Repository.TodoRepository;
+import com.example.demo.service.TodoService;
+
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
@@ -18,72 +20,47 @@ import org.springframework.http.MediaType;
 
 @Slf4j
 @RestController
-public class TestController {
+public class TodoController {
     
-    @Autowired
-    TodoRepository repo;
-    
-    @GetMapping("/ok")
-    public ResponseEntity<String> test() {
-        return ResponseEntity.ok("ok");
-    }
+    TodoService service;
 
+    @Autowired
+    public TodoController(TodoService service) {
+        this.service = service;
+    }
+    
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     @PostMapping(value = "/putTodo", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TodoEntity> putTodo(@RequestBody TodoEntity todo) {
         log.info("posted entity : {}", todo.toString());
-        repo.save(todo);
-        return ResponseEntity.ok(repo.save(todo));
+        var result = service.putTodo(todo);
+        return ResponseEntity.ok(result);
     }
 
     // http://localhost:8080/getTodo/1
     @GetMapping("/getTodo/{id}")
     public ResponseEntity<TodoEntity> getTodo(@PathVariable Long id) {
-        Optional<TodoEntity> entity = repo.findById(id);
-        TodoEntity result = null;
-
-        if(entity.isPresent()){
-            log.info("get entity : {}", entity.get().getId());
-            result = entity.get();
-        } else {
-            result = new TodoEntity();
-            result.setId(id);
-            result.setStatus(TodoStatus.COMPLETED);
-            result.setText("Completed");
-            result.setAssignedUserId("worker");
-            result.setRegistrantId("registrantId");
-            result = repo.save(result);
-            log.info("inserted entity : {}", result.getId());
-        } 
-
+        var result = service.getTodo(id);
         return ResponseEntity.ok(result);
     }
 
     // http://localhost:8080/getTodo
     @GetMapping("/getTodo")
     public ResponseEntity<Iterable<TodoEntity>> getTodos() {
-        var result = repo.findAll();
+        var result = service.getTodos();
         log.info("list : {}", result);
         return ResponseEntity.ok(result);
     }
 
     @GetMapping("/deleteTodo/{id}")
     public ResponseEntity<String> deleteTodo(@PathVariable Long id) {
-        repo.deleteById(id);
-        log.info("deleted : {}", id);
+        service.deleteTodo(id);
         return ResponseEntity.ok("deleted");
     }
 
     @GetMapping("/completeTodo/{id}")
     public ResponseEntity<String> completeTodo(@PathVariable Long id) {
-        Optional<TodoEntity> entity = repo.findById(id);
-        if (entity.isPresent()) {
-            var todo = entity.get();
-            todo.setStatus(TodoStatus.COMPLETED);
-            repo.save(todo);
-            return ResponseEntity.ok("ok");
-        } else {
-            return ResponseEntity.ok("fail");
-        }        
+        service.updateTodo(id, TodoStatus.COMPLETED);
+        return ResponseEntity.ok("updated");     
     }
 }
