@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Link, Outlet, BrowserRouter, useNavigate } from "react-router-dom"
 import { useLogin } from '../../hooks/useLogin';
 import { useLoginState } from '../../provider/AppProvider';
+import { LangSelect } from '../select/LangSelect';
+import { width } from '@mui/system';
 
 export const NavigationBar = () => {
     const context = useLoginState();
@@ -14,8 +16,10 @@ export const NavigationBar = () => {
 
     return (
         
-            <nav>
+            <nav style={{height: 70}}>
                 <SliContainer>
+                    <LangSelect />
+
                     <SliItem>
                         <Link to="/home">홈</Link>
                     </SliItem>
@@ -42,7 +46,9 @@ export const NavigationBar = () => {
                     <SliItem>
                         <Link to="/logout">Logout</Link>
                     </SliItem> */}
-
+                    
+                        
+                    
                 </SliContainer>
 
                 <Outlet />
@@ -51,20 +57,19 @@ export const NavigationBar = () => {
     )
 }
 
-const NoButton = styled.button`
-    all: unset;
-`
-
 const SliItem = styled.li`
     > * {
         cursor: pointer;
+        display: inline-block;
+        height: 80%;
         color: #fff;
+        text-decoration-line: none;
         background-color: #40514e;
-        padding: 6px 24px;
-        margin: 2px 8px;
+        padding: 2px 25px;
+        margin: 6px 10px;
         border: none;
         outline: none;
-        border-radius: 9999px;
+        border-radius: 7px;
         &:hover {
             cursor: pointer;
             opacity: 0.8;
