@@ -6,11 +6,12 @@ export const LangSelect = () => {
     const langKorean :string = 'Korean';
     const langJapanese :string = 'Japanese';
     const langEnglish :string = 'English';
-    const [selectedLanguage, setSelectedLanguage] = React.useState('');
-
+    
+    const [selectedLanguage, setSelectedLanguage] = React.useState<string>('');
     const handleChange = (event: SelectChangeEvent) => {
         console.log(event);
-        setSelectedLanguage(event.target.value as string);
+        const asNumber = event.target.value as string;
+        setSelectedLanguage(asNumber);
         console.log(selectedLanguage);
     };
 
@@ -25,9 +26,9 @@ export const LangSelect = () => {
                     label={selectedLanguage}
                     onChange={handleChange}
                 >
-                    <MenuItem value={langKorean}>{langKorean}</MenuItem>
-                    <MenuItem value={langJapanese}>{langJapanese}</MenuItem>
-                    <MenuItem value={langEnglish}>{langEnglish}</MenuItem>
+                    <MenuItem value={0}>{langKorean}</MenuItem>
+                    <MenuItem value={1}>{langJapanese}</MenuItem>
+                    <MenuItem value={2}>{langEnglish}</MenuItem>
                 </Select>
             </FormControl>
         </Box>
