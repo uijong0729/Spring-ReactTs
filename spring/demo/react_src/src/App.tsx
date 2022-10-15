@@ -4,22 +4,26 @@ import { BodyContainer } from './components/layout/BodyContainer';
 import { Home } from './pages/Home';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routers/AppRoutes';
-import { AppProvider } from './provider/AppProvider';
 import { NavigationBar } from './components/navi/NavigationBar';
+import { AuthContext } from './provider/AuthContext';
+import { useState } from 'react';
 
 function App() {
+    const [authenticated, setAuthenticated] = useState(false);
+
     return(
         <div className='App'>
         <BrowserRouter>
-            <AppProvider>
-                
-            <Header />
+
+            <AuthContext.Provider value={{authenticated, setAuthenticated}}>
+                <Header />
                 <BodyContainer>
                     <AppRoutes />
                 </BodyContainer>
                 
                 <Footer />
-            </AppProvider>
+            </AuthContext.Provider>
+            
         </BrowserRouter>
         </div>
     );

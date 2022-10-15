@@ -23,7 +23,6 @@ export const LoginInput = () => {
 
     const onClickSignUp = () :void  => {
         console.log('sign up');
-        
     }
     
 

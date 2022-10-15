@@ -1,23 +1,28 @@
 // 커스텀 훅은 접두어에 use를 붙이는 것이 관례
 import axios from "axios";
 import { FC, useState, useContext } from "react";
-import { LoginContext, LoginDispatchContext, useLoginState, useLoginStateDispatch } from "../provider/AppProvider";
 import { UserEntity } from "./api/UserEntity";
 import { Constants } from "../utils/Constants";
 import { useNavigate } from "react-router-dom";
+import {AuthContext} from "../provider/AuthContext";
 
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useLogin = () => {
-    const context = useLoginState();
-    const dispatch = useLoginStateDispatch();
+    //const context = useLoginState();
+    //const dispatch = useLoginStateDispatch();
+    
+    const { authenticated, setAuthenticated } = useContext(AuthContext);
     const [userEntity, setUserEntity] = useState<UserEntity>();
-    const setLoginInfo = (param:boolean) => dispatch({type: 0, isLogin: param});
+    //const setLoginInfo = (param:boolean) => dispatch({type: 0, isLogin: param});
     const navigate = useNavigate();
 
     // 로그인
     const goLogin = async (props: UserEntity) => {
-      setLoginInfo(true);
-      console.log(context?.isLogin);
+      // testcode//////////////////////
+      //setLoginInfo(true);
+      setAuthenticated(true);
+      console.log(authenticated);
+      /////////////////////////////////
 
       // post
       await axios.post<UserEntity>(`${Constants.ENV}/login`, {
@@ -37,6 +42,7 @@ export const useLogin = () => {
         };
         setUserEntity(res);
         //setIsLogin(true);
+        setAuthenticated(true);
         navigate("/");
       })
       // 에러가 발생할 경우

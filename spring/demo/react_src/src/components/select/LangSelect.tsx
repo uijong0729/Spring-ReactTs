@@ -6,13 +6,16 @@ export const LangSelect = () => {
     const langKorean :string = 'Korean';
     const langJapanese :string = 'Japanese';
     const langEnglish :string = 'English';
-    
-    const [selectedLanguage, setSelectedLanguage] = React.useState<string>('');
+    const selectValue :string = '';
+
+    const [selectedLanguage, setSelectedLanguage] = React.useState<number>(0);
     const handleChange = (event: SelectChangeEvent) => {
         console.log(event);
         const asNumber = event.target.value as string;
-        setSelectedLanguage(asNumber);
-        console.log(selectedLanguage);
+        const langNum = parseInt(asNumber) as number;
+
+        setSelectedLanguage(langNum);
+        console.log(langNum);
     };
 
     return (
@@ -22,7 +25,7 @@ export const LangSelect = () => {
                 <Select
                     labelId="label"
                     id="demo-simple-select"
-                    value={selectedLanguage}
+                    value={selectValue}
                     label={selectedLanguage}
                     onChange={handleChange}
                 >
