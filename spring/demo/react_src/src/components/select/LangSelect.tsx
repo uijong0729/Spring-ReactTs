@@ -1,34 +1,32 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import React from "react";
+import React, { useContext, useState } from "react";
+import { LanguageContext } from "../../provider/AppContext";
 
 export const LangSelect = () => {
-    const lang :string = 'Language';
-    const langKorean :string = 'Korean';
-    const langJapanese :string = 'Japanese';
-    const langEnglish :string = 'English';
-    const selectValue :string = '';
+    const lang: string = 'Language';
+    const langKorean: string = 'Korean';
+    const langJapanese: string = 'Japanese';
+    const langEnglish: string = 'English';
+    const { language, setLanguage } = useContext(LanguageContext);
+    const [selectedLabel, setSelecedtLabel] = useState('');
 
-    const [selectedLanguage, setSelectedLanguage] = React.useState<number>(0);
     const handleChange = (event: SelectChangeEvent) => {
         console.log(event);
-        const asNumber = event.target.value as string;
-        const langNum = parseInt(asNumber) as number;
-
-        setSelectedLanguage(langNum);
-        console.log(langNum);
+        const langNum = parseInt(event.target.value) as number;
+        setLanguage(langNum);
+        console.log(language);
     };
 
     return (
-        <Box sx={{ minWidth: 150, marginRight: 10}}>
+        <Box sx={{ minWidth: 150, marginRight: 10 }}>
             <FormControl fullWidth>
                 <InputLabel id="label">{lang}</InputLabel>
                 <Select
                     labelId="label"
                     id="demo-simple-select"
-                    value={selectValue}
-                    label={selectedLanguage}
-                    onChange={handleChange}
-                >
+                    label={selectedLabel}
+                    onChange={handleChange}>
+
                     <MenuItem value={0}>{langKorean}</MenuItem>
                     <MenuItem value={1}>{langJapanese}</MenuItem>
                     <MenuItem value={2}>{langEnglish}</MenuItem>

@@ -5,23 +5,26 @@ import { Home } from './pages/Home';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routers/AppRoutes';
 import { NavigationBar } from './components/navi/NavigationBar';
-import { AuthContext } from './provider/AuthContext';
+import { AuthContext, LanguageContext } from './provider/AppContext';
 import { useState } from 'react';
 
 function App() {
-    const [authenticated, setAuthenticated] = useState(false);
+    const [authenticated, setAuthenticated] = useState<boolean>(false);
+    const [language, setLanguage] = useState<number>(0);
 
     return(
         <div className='App'>
         <BrowserRouter>
 
             <AuthContext.Provider value={{authenticated, setAuthenticated}}>
-                <Header />
-                <BodyContainer>
-                    <AppRoutes />
-                </BodyContainer>
-                
-                <Footer />
+                <LanguageContext.Provider value={{language, setLanguage}}>
+                    <Header />
+                    <BodyContainer>
+                        <AppRoutes />
+                    </BodyContainer>
+                    
+                    <Footer />
+                </LanguageContext.Provider>
             </AuthContext.Provider>
             
         </BrowserRouter>

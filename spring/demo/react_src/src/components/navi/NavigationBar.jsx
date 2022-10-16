@@ -2,18 +2,13 @@ import styled from 'styled-components';
 import { Link, Outlet, BrowserRouter, useNavigate } from "react-router-dom"
 import { LangSelect } from '../select/LangSelect';
 import { Constants } from '../../utils/Constants';
-import { AuthContext } from '../../provider/AuthContext';
+import { AuthContext, LanguageContext } from '../../provider/AppContext';
 import { useContext } from 'react'
 
 export const NavigationBar = () => {
     const { authenticated, setAuthenticated } = useContext(AuthContext);
+    const { language, setLanguage } = useContext(LanguageContext);
     const navigate = useNavigate();
-    
-    // test code////////////
-    const context = {
-        lang: 0
-    }
-    /////////////////////
 
     const logout = () => {
         setAuthenticated(false);
@@ -27,22 +22,22 @@ export const NavigationBar = () => {
                     <LangSelect />
 
                     <SliItem>
-                        <Link to="/home">{Constants.TEXT_HOME[context.lang]}</Link>
+                        <Link to="/home">{Constants.TEXT_HOME[language]}</Link>
                     </SliItem>
 
                     <SliItem>
-                        <Link to="/todo">{Constants.TEXT_TODO[context.lang]}</Link>
+                        <Link to="/todo">{Constants.TEXT_TODO[language]}</Link>
                     </SliItem>
 
                     
                     {
                         !authenticated ? 
                         (<SliItem>
-                            <Link to="/login">{Constants.TEXT_LOGIN[context.lang]}</Link>
+                            <Link to="/login">{Constants.TEXT_LOGIN[language]}</Link>
                         </SliItem>)
                         :(
                         <SliItem>
-                            <Link onClick={logout} to="/logout">{context.id} {Constants.TEXT_LOGOUT[context.lang]}</Link>
+                            <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
                         </SliItem>
                         )
                     }

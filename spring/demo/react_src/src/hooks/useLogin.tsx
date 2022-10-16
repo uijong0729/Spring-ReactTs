@@ -4,7 +4,7 @@ import { FC, useState, useContext } from "react";
 import { UserEntity } from "./api/UserEntity";
 import { Constants } from "../utils/Constants";
 import { useNavigate } from "react-router-dom";
-import {AuthContext} from "../provider/AuthContext";
+import {AuthContext} from "../provider/AppContext";
 
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useLogin = () => {
