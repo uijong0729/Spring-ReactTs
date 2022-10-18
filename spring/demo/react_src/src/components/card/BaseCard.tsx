@@ -7,11 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TodoEntity } from '../../hooks/api/TodoEntity';
 import { useTodos } from '../../hooks/useTodos';
+import { Constants } from '../../utils/Constants';
+import { LanguageContext } from '../../provider/AppContext';
 
 export default function BasicCard(props: TodoEntity) {
   const { id, text, status, registrantId, assignedUserId, deadline } = props;
   const newDeadline = deadline?.toString().substring(0, 10)
   const { deleteTodo, completeTodo } = useTodos();
+  const { language, setLanguage } = React.useContext(LanguageContext);
+
   // 완료 
   const sCompleteTodo = () => {
     completeTodo(id).then(() => {
@@ -20,7 +24,7 @@ export default function BasicCard(props: TodoEntity) {
   }
   // 삭제
   const sDeleteTodo = () => {
-    const ok :boolean = window.confirm('삭제 하시겠습니까?');
+    const ok :boolean = window.confirm(Constants.MSG_DELETE_CONFIRM[language]);
     if (ok) {
       deleteTodo(id).then(() => {
         window.location.reload();

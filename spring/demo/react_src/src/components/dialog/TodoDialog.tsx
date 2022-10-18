@@ -8,11 +8,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useTodos } from '../../hooks/useTodos';
 import styled from 'styled-components';
+import { LanguageContext } from '../../provider/AppContext';
+import { Constants } from '../../utils/Constants';
 
 
 export const TodoDialog = () => {
   const [open, setOpen] = React.useState(false);
   const { addTodo, getAllTodos } = useTodos();
+  const { language, setLanguage } = React.useContext(LanguageContext);
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,7 +37,7 @@ export const TodoDialog = () => {
   return (
     <DialogContainer>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Todo추가
+        {Constants.TEXT_ADD_TODO[language]}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Todo</DialogTitle>

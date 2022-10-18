@@ -28,8 +28,8 @@ export const LangSelect = () => {
                     onChange={handleChange}>
 
                     <MenuItem value={0}>{langKorean}</MenuItem>
-                    <MenuItem value={1}>{langJapanese}</MenuItem>
-                    <MenuItem value={2}>{langEnglish}</MenuItem>
+                    <MenuItem value={1}>{langEnglish}</MenuItem>
+                    <MenuItem value={2}>{langJapanese}</MenuItem>
                 </Select>
             </FormControl>
         </Box>
