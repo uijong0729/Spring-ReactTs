@@ -44,7 +44,7 @@ export default function BasicCard(props: TodoEntity) {
     }>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {`마감일 : ${newDeadline} / 상태 : ${status}`}
+          {`${Constants.TEXT_END_DATE[language]} : ${newDeadline} / ${Constants.TEXT_TODO_STATE[language]} : ${status}`}
         </Typography>
 
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -58,8 +58,8 @@ export default function BasicCard(props: TodoEntity) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={sCompleteTodo} size="small">완료하기</Button>
-        <Button onClick={sDeleteTodo} size="small">삭제</Button>
+        <Button onClick={sCompleteTodo} size="small">${Constants.TEXT_BT_COMPLETE[language]}</Button>
+        <Button onClick={sDeleteTodo} size="small">${Constants.TEXT_BT_DELETE[language]}</Button>
       </CardActions>
     </Card>
   );
