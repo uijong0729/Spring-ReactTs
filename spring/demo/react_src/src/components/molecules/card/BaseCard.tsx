@@ -1,14 +1,13 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { TodoEntity } from '../../hooks/api/TodoEntity';
-import { useTodos } from '../../hooks/useTodos';
-import { Constants } from '../../utils/Constants';
-import { LanguageContext } from '../../provider/AppContext';
+import { TodoEntity } from '../../../hooks/api/TodoEntity';
+import { useTodos } from '../../../hooks/useTodos';
+import { Constants } from '../../../utils/Constants';
+import { LanguageContext } from '../../../provider/AppContext';
 
 export default function BasicCard(props: TodoEntity) {
   const { id, text, status, registrantId, assignedUserId, deadline } = props;

@@ -1,10 +1,10 @@
 
-import { useTodos } from '../hooks/useTodos';
-import { TodoDialog } from '../components/dialog/TodoDialog';
-import { useState, useEffect } from 'react'
-import BasicCard from '../components/card/BaseCard';
+import { useTodos } from '../../hooks/useTodos';
+import { TodoDialog } from '../molecules/dialog/TodoDialog';
+import { useEffect } from 'react'
+import BasicCard from '../molecules/card/BaseCard';
 import styled from 'styled-components';
-import { TodoStatus } from '../hooks/api/TodoEntity';
+import { TodoStatus } from '../../hooks/api/TodoEntity';
 
 export const TestPage = () => {
     const { todoEntities, getAllTodos } = useTodos();
@@ -21,7 +21,7 @@ export const TestPage = () => {
             <CardContainer className="card_contianer">
                 {
                     todoEntities.filter((todos) => {
-                        return todos.status == TodoStatus.IMCOMPLETED
+                        return todos.status === TodoStatus.IMCOMPLETED
                     }).map((todos) => (
                         <BasicCard 
                             assignedUserId={todos.assignedUserId} 

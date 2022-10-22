@@ -1,10 +1,8 @@
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { BodyContainer } from './components/layout/BodyContainer';
-import { Home } from './pages/Home';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routers/AppRoutes';
-import { NavigationBar } from './components/navi/NavigationBar';
 import { AuthContext, LanguageContext } from './provider/AppContext';
 import { useState } from 'react';
 

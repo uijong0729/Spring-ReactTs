@@ -1,6 +1,6 @@
 // 커스텀 훅은 접두어에 use를 붙이는 것이 관례
 import axios from "axios";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { Constants } from "../utils/Constants";
 import { TodoEntity } from "./api/TodoEntity";
 

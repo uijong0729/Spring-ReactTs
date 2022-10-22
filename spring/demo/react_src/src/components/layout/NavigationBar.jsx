@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link, Outlet, BrowserRouter, useNavigate } from "react-router-dom"
-import { LangSelect } from '../select/LangSelect';
+import { LangSelect } from '../atoms/select/LangSelect';
 import { Constants } from '../../utils/Constants';
 import { AuthContext, LanguageContext } from '../../provider/AppContext';
 import { useContext } from 'react'

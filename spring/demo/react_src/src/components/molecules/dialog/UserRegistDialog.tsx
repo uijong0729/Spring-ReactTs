@@ -4,17 +4,18 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useTodos } from '../../hooks/useTodos';
 import styled from 'styled-components';
-import { useLogin } from '../../hooks/useLogin';
-import { UserEntity } from '../../hooks/api/UserEntity';
+import { useLogin } from '../../../hooks/useLogin';
+import { UserEntity } from '../../../hooks/api/UserEntity';
+import { LanguageContext } from '../../../provider/AppContext';
+import { Constants } from '../../../utils/Constants';
 
 
 export const UserRegistDialog = () => {
   const [open, setOpen] = React.useState(false);
   const { addUser } = useLogin();
+  const { language, setLanguage } = React.useContext(LanguageContext);
   
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,17 +44,17 @@ export const UserRegistDialog = () => {
   return (
     <DialogContainer>
       <Button variant="outlined" onClick={handleClickOpen}>
-        회원가입
+        {Constants.TEXT_BT_SIGNUP[language]}
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>회원가입</DialogTitle>
+        <DialogTitle>{Constants.TEXT_BT_SIGNUP[language]}</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             id="userId"
             type="text"
-            placeholder="ID를 입력"
+            placeholder="ID"
             fullWidth
             required
             variant="standard"
@@ -62,7 +63,7 @@ export const UserRegistDialog = () => {
             autoFocus
             margin="dense"
             id="userPass"
-            placeholder="비밀번호를 입력"
+            placeholder="Password"
             type="password"
             fullWidth
             required

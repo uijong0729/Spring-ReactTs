@@ -11,6 +11,8 @@ export class Constants {
     public static readonly TEXT_TODO_STATE :string[] = ['진행도', 'STATUS', '進捗'];
     public static readonly TEXT_BT_COMPLETE :string[] = ['완료하기', 'Complete', '完了にする'];
     public static readonly TEXT_BT_DELETE :string[] = ['삭제', 'Delete', '削除'];
+    public static readonly TEXT_BT_LOGIN :string[] = ['로그인', 'Sign In', 'ログイン'];
+    public static readonly TEXT_BT_SIGNUP :string[] = ['회원가입', 'Sign Up', '新規登録'];
 
     // msg
     public static readonly MSG_DELETE_CONFIRM :string[] = ['삭제 하시겠습니까?', 'do you want to delete?', '削除しますか？'];

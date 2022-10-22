@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { BaseButton } from "./BaseButton";
-import { BtProps } from "../types/ComponentType";
+import { BtProps } from "../../../types/ComponentType";
 
-export const BlueButton = (props :BtProps) => {
+export const GreenButton = (props :BtProps) => {
     const { children, onClick } = props;
     return(
         <SButton onClick={onClick}>{children}</SButton>
@@ -10,6 +10,6 @@ export const BlueButton = (props :BtProps) => {
 }
 
 const SButton = styled(BaseButton)`
-    background-color: blue;
+    background-color: green;
     color: white;
 `

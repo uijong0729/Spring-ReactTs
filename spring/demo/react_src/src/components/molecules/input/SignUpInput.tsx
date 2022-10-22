@@ -1,8 +1,6 @@
-import { UserEntity } from "../../hooks/api/UserEntity";
-import { useLogin } from "../../hooks/useLogin";
-import { GreenButton } from "../button/GreenButton";
-import { BlueButton } from "../button/BlueButton";
-import { ReactElement } from "react";
+import { UserEntity } from "../../../hooks/api/UserEntity";
+import { useLogin } from "../../../hooks/useLogin";
+import { BlueButton } from "../../atoms/button/BlueButton";
 
 export const SignUpInput = () => {
     const { addUser } = useLogin();

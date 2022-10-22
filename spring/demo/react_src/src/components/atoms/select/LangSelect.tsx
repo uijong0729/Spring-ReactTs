@@ -1,6 +1,6 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import React, { useContext, useState } from "react";
-import { LanguageContext } from "../../provider/AppContext";
+import { useContext, useState } from "react";
+import { LanguageContext } from "../../../provider/AppContext";
 
 export const LangSelect = () => {
     const lang: string = 'Language';

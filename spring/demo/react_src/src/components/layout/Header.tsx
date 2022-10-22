@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { NavigationBar } from "../navi/NavigationBar"
+import { NavigationBar } from "./NavigationBar"
 
 export const Header = () => {
     return (

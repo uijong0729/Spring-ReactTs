@@ -6,10 +6,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useTodos } from '../../hooks/useTodos';
+import { useTodos } from '../../../hooks/useTodos';
 import styled from 'styled-components';
-import { LanguageContext } from '../../provider/AppContext';
-import { Constants } from '../../utils/Constants';
+import { LanguageContext } from '../../../provider/AppContext';
+import { Constants } from '../../../utils/Constants';
 
 
 export const TodoDialog = () => {
