@@ -16,6 +16,6 @@ export class Constants {
 
     // msg
     public static readonly MSG_DELETE_CONFIRM :string[] = ['삭제 하시겠습니까?', 'do you want to delete?', '削除しますか？'];
-    
+    public static readonly MSG_WELCOME :string[] = ['환영합니다!', 'Welcome!', 'いらっしゃいませ!'];
     
 }

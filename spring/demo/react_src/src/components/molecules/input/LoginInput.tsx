@@ -12,8 +12,6 @@ export const LoginInput = () => {
                     <input id="pass" type="password" />
                 </dd>
             </dl>
-            
-
         </>
     )
 }

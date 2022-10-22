@@ -2,10 +2,11 @@ import { LoginInput } from '../molecules/input/LoginInput';
 import { UserRegistDialog } from "../molecules/dialog/UserRegistDialog";
 import { UserEntity } from "../../hooks/api/UserEntity";
 import { useLogin } from "../../hooks/useLogin";
-import { Button } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 import { Constants } from '../../utils/Constants';
 import { LanguageContext } from '../../provider/AppContext';
 import { useContext } from 'react';
+import { CenterContainer } from '../layout/CenterContainer';
 
 export const LoginPage = () => {
     const { userEntity, goLogin } = useLogin();
@@ -24,17 +25,18 @@ export const LoginPage = () => {
         goLogin(entity);
     }
 
-    const onClickSignUp = () :void  => {
-        console.log('sign up');
-    }
-
     return (
-        <div>
-            <LoginInput />
-            <Button variant="contained" color="success" onClick={onClickLogin}>
-                {Constants.TEXT_BT_LOGIN[language]}
-            </Button>
-            <UserRegistDialog />
-        </div>
+        <>
+            <CenterContainer>
+                <div>
+                    <Alert severity="info">{Constants.MSG_WELCOME[language]}</Alert>
+                    <LoginInput />
+                    <Button variant="contained" color="success" onClick={onClickLogin}>
+                        {Constants.TEXT_BT_LOGIN[language]}
+                    </Button>
+                    <UserRegistDialog />
+                </div>
+            </CenterContainer>
+        </>
     )
 }
