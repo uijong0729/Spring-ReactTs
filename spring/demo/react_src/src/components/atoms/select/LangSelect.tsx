@@ -18,7 +18,7 @@ export const LangSelect = () => {
     };
 
     return (
-        <Box sx={{ minWidth: 150, marginRight: 10 }}>
+        <Box sx={{ minWidth: 150, marginRight: 10, paddingTop: 1 }}>
             <FormControl fullWidth>
                 <InputLabel id="label">{lang}</InputLabel>
                 <Select

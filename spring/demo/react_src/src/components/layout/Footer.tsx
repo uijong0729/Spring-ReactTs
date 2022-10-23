@@ -1,19 +1,24 @@
+import { AppBar, Toolbar } from "@mui/material"
+import { height } from "@mui/system"
 import styled from "styled-components"
 
 export const Footer = () => {
     return (
-        <SFooter>
-            &copy; 2021 test
-        </SFooter>
+        <>
+            <AppBar 
+                position="fixed" 
+                color="default" 
+                sx={
+                    { top: 'auto', 
+                        bottom: 0, 
+                        marginBottom: '3px',
+                        border: '1px solid gray',
+                        boxShadow: '5px 7px #888888' }
+                }>
+
+                <Toolbar>@written by euijong.lee</Toolbar>
+            </AppBar>
+            <Toolbar />
+        </>
     )
 }
-
-const SFooter = styled.footer`
-    background-color: #11999e;
-    color: #fff;
-    text-align: center;
-    padding: 8px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-`
