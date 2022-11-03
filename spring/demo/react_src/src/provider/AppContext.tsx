@@ -1,4 +1,5 @@
 import {createContext} from 'react';
+import { TodoEntity } from '../hooks/api/TodoEntity';
 
 export const AuthContext = createContext({
     authenticated: false,

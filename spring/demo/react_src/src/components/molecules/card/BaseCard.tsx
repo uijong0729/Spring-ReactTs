@@ -57,8 +57,8 @@ export default function BasicCard(props: TodoEntity) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={sCompleteTodo} size="small">${Constants.TEXT_BT_COMPLETE[language]}</Button>
-        <Button onClick={sDeleteTodo} size="small">${Constants.TEXT_BT_DELETE[language]}</Button>
+        <Button onClick={sCompleteTodo} size="small">{Constants.TEXT_BT_COMPLETE[language]}</Button>
+        <Button onClick={sDeleteTodo} size="small">{Constants.TEXT_BT_DELETE[language]}</Button>
       </CardActions>
     </Card>
   );

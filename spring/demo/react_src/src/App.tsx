@@ -16,12 +16,14 @@ function App() {
 
             <AuthContext.Provider value={{authenticated, setAuthenticated}}>
                 <LanguageContext.Provider value={{language, setLanguage}}>
-                    <Header />
-                    <BodyContainer>
-                        <AppRoutes />
-                    </BodyContainer>
                     
-                    <Footer />
+                        <Header />
+                        <BodyContainer>
+                            <AppRoutes />
+                        </BodyContainer>
+                        
+                        <Footer />
+                    
                 </LanguageContext.Provider>
             </AuthContext.Provider>
             

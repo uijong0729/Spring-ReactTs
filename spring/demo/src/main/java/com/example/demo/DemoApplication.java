@@ -3,6 +3,10 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 // import org.springframework.http.HttpMethod;
 // import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 // import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,25 +37,4 @@ public class DemoApplication {
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 		}
 	}
-
-	// @EnableWebSecurity
-	// class SecurityConfig {
-	// 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-	// 		http.csrf().disable().authorizeRequests()
-	// 			.antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico")
-	// 			.permitAll()
-	// 			.anyRequest().authenticated()
-	// 			.and()
-	// 			.formLogin();
-	// 		http.logout()
-	// 		.logoutUrl("/logout")
-	// 		.logoutSuccessUrl("/login");
-				
-	// 			//.loginPage("/login_page.html")
-	// 			//.loginProcessingUrl("/login")
-	// 			//.defaultSuccessUrl("index.html", true)
-	// 			//.failureUrl("/login_page.html?error=true");
-	// 		return http.build();
-	// 	}
-	// }
 }

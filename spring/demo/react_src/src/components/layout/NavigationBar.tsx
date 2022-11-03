@@ -5,15 +5,16 @@ import { Constants } from '../../utils/Constants';
 import { AuthContext, LanguageContext } from '../../provider/AppContext';
 import { useContext } from 'react'
 import { AppBar, Box, Toolbar } from '@mui/material';
+import { justPost } from '../../utils/PostUtils';
 
 export const NavigationBar = () => {
     const { authenticated, setAuthenticated } = useContext(AuthContext);
     const { language, setLanguage } = useContext(LanguageContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const logout = () => {
         setAuthenticated(false);
-        navigate("/");
+        justPost("/logout");
     }
 
     return (
@@ -40,18 +41,20 @@ export const NavigationBar = () => {
                             <Link to="/todo">{Constants.TEXT_TODO[language]}</Link>
                         </SliItem>
 
-                        
-                        {
-                            !authenticated ? 
-                            (<SliItem>
-                                <Link to="/login">{Constants.TEXT_LOGIN[language]}</Link>
-                            </SliItem>)
-                            :(
-                            <SliItem>
+                        <SliItem>
                                 <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
-                            </SliItem>
-                            )
-                        }                    
+                        </SliItem>
+                        {
+                            // !authenticated ? 
+                            // (<SliItem>
+                            //     <Link to="/login">{Constants.TEXT_LOGIN[language]}</Link>
+                            // </SliItem>)
+                            // :(
+                            // <SliItem>
+                            //     <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
+                            // </SliItem>
+                            // )
+                        }    
                     </SliContainer>
 
                     <Outlet />

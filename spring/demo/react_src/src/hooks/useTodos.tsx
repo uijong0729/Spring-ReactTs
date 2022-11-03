@@ -7,7 +7,7 @@ import { TodoEntity } from "./api/TodoEntity";
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useTodos = () => {
     const [todoEntities, setTodoEntities] = useState<Array<TodoEntity>>([]);
-
+    
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     const addTodo = async (text :string, deadline :Date) => {
       await axios.post(`${Constants.ENV}/putTodo`, {
@@ -37,6 +37,7 @@ export const useTodos = () => {
           }
         })
         .then((response) => {
+            console.log(`getAllTodos : ${response}`);
             const res :Array<TodoEntity> = response.data.map((todo :TodoEntity) => ({
               id: todo.id,
               text: todo.text,
@@ -81,6 +82,6 @@ export const useTodos = () => {
 
     // 다른 곳에서 사용할 수 있도록 반환
     return {
-      getAllTodos, todoEntities, addTodo, setTodoEntities, deleteTodo, completeTodo
+      getAllTodos, addTodo, deleteTodo, completeTodo, todoEntities, setTodoEntities
     };
 };

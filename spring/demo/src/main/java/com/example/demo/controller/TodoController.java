@@ -4,6 +4,7 @@ import com.example.demo.Entity.TodoEntity;
 import com.example.demo.Entity.TodoStatus;
 import com.example.demo.Repository.TodoRepository;
 import com.example.demo.service.TodoService;
+import com.example.demo.service.TodoServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,7 +26,7 @@ public class TodoController {
     TodoService service;
 
     @Autowired
-    public TodoController(TodoService service) {
+    public TodoController(TodoServiceImpl service) {
         this.service = service;
     }
     

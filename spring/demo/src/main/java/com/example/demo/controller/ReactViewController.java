@@ -28,7 +28,7 @@ public class ReactViewController {
 
     @RequestMapping("/login")
     public String login() {
-        return "forward:/";
+        return "login.html";
     }
 
     // @PostMapping(value = "/logout_page")
