@@ -27,13 +27,9 @@ public class DemoApplication {
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			registry.addResourceHandler("/**")
-				.addResourceLocations(
-					"classpath:/public/"
-				);
-			registry.addResourceHandler("/index.html")
-				.addResourceLocations(
-					"classpath:/public/index.html"
-				);
+				.addResourceLocations("classpath:/public/")
+				.addResourceLocations("/","classpath:templates/");
+
 			WebMvcConfigurer.super.addResourceHandlers(registry);
 		}
 	}

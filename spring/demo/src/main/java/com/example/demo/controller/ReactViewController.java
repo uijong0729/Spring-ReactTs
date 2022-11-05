@@ -1,6 +1,15 @@
 package com.example.demo.controller;
 
 
+import javax.security.auth.message.config.AuthConfigProvider;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 // import org.springframework.security.core.Authentication;
 // import org.springframework.security.core.context.SecurityContextHolder;
 // import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -10,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ReactViewController {
-    
+
     @RequestMapping("/")
     public String index() {
         return "index.html";
@@ -26,9 +35,23 @@ public class ReactViewController {
         return "forward:/";
     }
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login.html";
+    // @RequestMapping("/login")
+    // public String login(HttpServletRequest request, HttpServletResponse response) {
+    //     return "login.html";
+    // }
+
+    @RequestMapping("/loginProcess")
+    public String loginProcess(HttpServletRequest request, HttpServletResponse response) {
+        return "forward:/";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "forward:/";
     }
 
     // @PostMapping(value = "/logout_page")
