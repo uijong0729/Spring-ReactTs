@@ -2,7 +2,6 @@ package com.example.demo.config.security;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,12 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -32,22 +27,18 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         
-        http.authorizeRequests()
-                .antMatchers("/static/**", "/*.js", "/*.json", "/*.ico")
-                //.antMatchers("/**")   // 무인증 테스트용
-                .permitAll();
+        // http.authorizeRequests()
+        //         .antMatchers("/static/**", "/*.js", "/*.json", "/*.ico")
+        //         .permitAll();
 
-        http.formLogin()
-            .loginPage("/login");
-
-         http.logout()
-                 .logoutUrl("/logout")
-                 .logoutSuccessUrl("/")
-                 .invalidateHttpSession(true);
+        http.authorizeHttpRequests()
+                .mvcMatchers("/login/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
 
         http.authenticationProvider(authenticationProvider());
         
-        http.userDetailsService(userDetailsService());
         
         return http.build();
     }
@@ -67,17 +58,5 @@ public class SecurityConfiguration {
                 return authentication.equals(UsernamePasswordAuthenticationToken.class);
             }
         };
-    }
-
-    @Bean
-    @SuppressWarnings("deprecation")
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(user);
     }
 }

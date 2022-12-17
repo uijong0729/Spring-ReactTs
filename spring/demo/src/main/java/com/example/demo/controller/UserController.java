@@ -1,53 +1,44 @@
 package com.example.demo.controller;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Entity.UserEntity;
-import com.example.demo.param.UserParam;
-import com.example.demo.service.UserService;
+import com.example.demo.service.AppUserService;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
 
-@Slf4j
-@RestController
-@RequestMapping("/test")
+@Controller
+@AllArgsConstructor
 public class UserController {
+    
+    AppUserService userService;
 
-    UserService service;
-
-    @Autowired
-    public UserController(UserService service) {
-        this.service = service;
-    }
-
-    @PostMapping(value = "/login", 
-        consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserParam> login(@RequestBody UserParam param) {
-        log.debug("id = {}, pass = {}", param.id(), param.pass());
-        var result = service.login(param);
-        if (result != null) {
-            log.debug("login = {}", result.toString());
-        } else {
-            log.debug("login = {}", "null");
-        }
+    @GetMapping("/login")
+    public String showLoginForm() {
+        //test user
+        userService.signupDummy();
         
-        return ResponseEntity.ok(param);
+        return "login";
     }
-
-    @PostMapping(value = "/signup", 
-    consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserEntity> signup(@RequestBody UserParam param) {
-        log.debug("id = {}, pass = {}", param.id(), param.pass());
-        var result = service.signup(param);
-        log.debug("save : {}, {}, {}", result.getUid(), result.getUserId(), result.getUserPass());
-        return ResponseEntity.ok(result);
+    
+    @GetMapping("/logout")
+    public String showlogoutForm() {
+        return "logout";
     }
-
+        
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "forward:/";
+    }
 
 }

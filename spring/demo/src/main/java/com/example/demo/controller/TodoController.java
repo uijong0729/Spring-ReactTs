@@ -2,15 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.Entity.TodoEntity;
 import com.example.demo.Entity.TodoStatus;
-import com.example.demo.Repository.TodoRepository;
 import com.example.demo.service.TodoService;
-import com.example.demo.service.TodoServiceImpl;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,15 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 
 @Slf4j
+@AllArgsConstructor
 @RestController
 public class TodoController {
     
     TodoService service;
-
-    @Autowired
-    public TodoController(TodoServiceImpl service) {
-        this.service = service;
-    }
     
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     @PostMapping(value = "/putTodo", consumes = MediaType.APPLICATION_JSON_VALUE)
