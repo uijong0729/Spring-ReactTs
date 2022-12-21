@@ -32,10 +32,13 @@ public class SecurityConfiguration {
         //         .permitAll();
 
         http.authorizeHttpRequests()
-                .mvcMatchers("/login/**").permitAll()
+                //.mvcMatchers("/login/**").permitAll()
+                .mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                // react에서 로그인을 제어하기 때문에 로그인 페이지를index로 지정
+                .loginPage("/index.html");  
 
         http.authenticationProvider(authenticationProvider());
         
