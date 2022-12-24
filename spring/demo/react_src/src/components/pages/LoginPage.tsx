@@ -13,12 +13,12 @@ export const LoginPage = () => {
     const { language, setLanguage } = useContext(LanguageContext);
     
     const onClickLogin = () :void => {
-        const id = document.getElementById('id') as HTMLInputElement;
-        const pass = document.getElementById('pass') as HTMLInputElement;
+        const username = document.getElementById('username') as HTMLInputElement;
+        const pass = document.getElementById('password') as HTMLInputElement;
 
         const entity :UserEntity = {
-            id: id.value,
-            pass: pass.value,
+            username: username.value,
+            password: pass.value,
             groupId: ''
         }
         

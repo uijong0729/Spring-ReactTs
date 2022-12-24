@@ -27,12 +27,12 @@ export const UserRegistDialog = () => {
   };
 
   const handleSubmit = () => {
-    const inputId: string = (document.getElementById("userId") as HTMLInputElement).value;
-    const inputPass: string = (document.getElementById("userPass") as HTMLInputElement).value;
+    const inputId: string = (document.getElementById("username") as HTMLInputElement).value;
+    const inputPass: string = (document.getElementById("password") as HTMLInputElement).value;
 
     const userEntity :UserEntity = {
-      id: inputId, 
-      pass: inputPass,
+      username: inputId, 
+      password: inputPass,
       groupId: ''
     }
     
@@ -53,7 +53,7 @@ export const UserRegistDialog = () => {
           <TextField
             autoFocus
             margin="dense"
-            id="userId"
+            id="username"
             type="text"
             placeholder="ID"
             fullWidth
@@ -63,7 +63,7 @@ export const UserRegistDialog = () => {
           <TextField
             autoFocus
             margin="dense"
-            id="userPass"
+            id="password"
             placeholder="Password"
             type="password"
             fullWidth

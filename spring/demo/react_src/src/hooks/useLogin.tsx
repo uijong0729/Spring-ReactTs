@@ -8,26 +8,16 @@ import {AuthContext} from "../provider/AppContext";
 
 // 모든 유저 일람을 취득하는 커스텀 훅
 export const useLogin = () => {
-    //const context = useLoginState();
-    //const dispatch = useLoginStateDispatch();
-    
     const { authenticated, setAuthenticated } = useContext(AuthContext);
     const [userEntity, setUserEntity] = useState<UserEntity>();
-    //const setLoginInfo = (param:boolean) => dispatch({type: 0, isLogin: param});
     const navigate = useNavigate();
 
     // 로그인
     const goLogin = async (props: UserEntity) => {
-      // testcode//////////////////////
-      //setLoginInfo(true);
-      setAuthenticated(true);
-      console.log(authenticated);
-      /////////////////////////////////
-
       // post
       await axios.post<UserEntity>(`${Constants.ENV}/login`, {
-          id: props.id,
-          pass: props.pass
+          username: props.username,
+          password: props.password
       }, {
         headers: {
             'Content-Type': 'application/json'
@@ -36,8 +26,8 @@ export const useLogin = () => {
       // 로그인 OK
       .then((response) => {
         const res :UserEntity = {
-          id: response.data.id,
-          pass: response.data.pass,
+          username: response.data.username,
+          password: response.data.password,
           groupId: ''
         };
         setUserEntity(res);
@@ -48,6 +38,7 @@ export const useLogin = () => {
       // 에러가 발생할 경우
       .catch((error)=>{
         console.log(error);
+        setAuthenticated(false);
         //setIsLogin(false);
       })
     }
@@ -76,8 +67,8 @@ export const useLogin = () => {
     const addUser = async (props: UserEntity) => {
       // post
       await axios.post<UserEntity>(`${Constants.ENV}/signup`, {
-          id: props.id,
-          pass: props.pass,
+          username: props.username,
+          password: props.password,
           groupId: props.groupId
       }, {
         headers: {

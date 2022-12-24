@@ -30,7 +30,8 @@ public class SecurityConfiguration {
         // http.authorizeRequests()
         //         .antMatchers("/static/**", "/*.js", "/*.json", "/*.ico")
         //         .permitAll();
-
+        
+        // https://www.baeldung.com/spring-security-login
         http.authorizeHttpRequests()
                 //.mvcMatchers("/login/**").permitAll()
                 .mvcMatchers("/**").permitAll()

@@ -5,11 +5,11 @@ export const LoginInput = () => {
             <dl>
                 <dt>ID</dt>
                 <dd>
-                    <input id="id" type="text" />
+                    <input id="username" type="text" />
                 </dd>
                 <dt>PASSWORD</dt>
                 <dd>
-                    <input id="pass" type="password" />
+                    <input id="password" type="password" />
                 </dd>
             </dl>
         </>

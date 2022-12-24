@@ -19,9 +19,9 @@ public class AppUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repo.findByUserId(username).map((user) -> {
+        return repo.findByUsername(username).map((user) -> {
             // 유저 발견시
-            return new AppUserDetail(user.getUserId(), user.getUserPass(), Collections.emptyList());
+            return new AppUserDetail(user.getUsername(), user.getPassword(), Collections.emptyList());
         }).orElseThrow(() -> {
             // Optional 내용물이 null일 경우
             return new UsernameNotFoundException(username);
@@ -29,7 +29,11 @@ public class AppUserService implements UserDetailsService {
     }
 
     public UserEntity signup(UserParam param) {
-        UserEntity result = repo.save(new UserEntity(param.id(), param.pass(), param.groupId()));
+        UserEntity result = repo.save(
+            new UserEntity(
+                param.username(), param.password(), param.groupId()
+            )
+        );
         return result;
     }
 

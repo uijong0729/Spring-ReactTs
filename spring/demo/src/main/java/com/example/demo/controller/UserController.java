@@ -2,43 +2,56 @@ package com.example.demo.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.param.UserParam;
 import com.example.demo.service.AppUserService;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
+import lombok.extern.slf4j.Slf4j;
 
-@Controller
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
+@RestController
 @AllArgsConstructor
+@Slf4j
 public class UserController {
     
     AppUserService userService;
 
-    @GetMapping("/login")
-    public String showLoginForm() {
+    @RequestMapping(
+        path = "/login" , 
+        method = RequestMethod.POST, 
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    public ResponseEntity<String> showLoginForm(UserParam param) {
         //test user
         userService.signupDummy();
+
+        log.debug("LOGIN DEBUG = " + param.username());
         
-        return "login";
+        return ResponseEntity.ok("ok");
     }
     
-    @GetMapping("/logout")
-    public String showlogoutForm() {
-        return "logout";
-    }
+    // @GetMapping("/logout")
+    // public String showlogoutForm() {
+    //     return "logout";
+    // }
         
-    @RequestMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "forward:/";
-    }
+    // @RequestMapping("/logout")
+    // public String logout(HttpServletRequest request, HttpServletResponse response) {
+    //     Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    //     if (auth != null) {
+    //         new SecurityContextLogoutHandler().logout(request, response, auth);
+    //     }
+    //     return "forward:/";
+    // }
 
 }

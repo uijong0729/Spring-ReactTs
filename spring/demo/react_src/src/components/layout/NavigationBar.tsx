@@ -41,19 +41,19 @@ export const NavigationBar = () => {
                             <Link to="/todo">{Constants.TEXT_TODO[language]}</Link>
                         </SliItem>
 
-                        <SliItem>
+                        {/* <SliItem>
                                 <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
-                        </SliItem>
+                        </SliItem> */}
                         {
-                            // !authenticated ? 
-                            // (<SliItem>
-                            //     <Link to="/login">{Constants.TEXT_LOGIN[language]}</Link>
-                            // </SliItem>)
-                            // :(
-                            // <SliItem>
-                            //     <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
-                            // </SliItem>
-                            // )
+                            !authenticated ? 
+                            (<SliItem>
+                                <Link to="/login">{Constants.TEXT_LOGIN[language]}</Link>
+                            </SliItem>)
+                            :(
+                            <SliItem>
+                                <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
+                            </SliItem>
+                            )
                         }    
                     </SliContainer>
 

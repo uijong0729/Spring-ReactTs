@@ -6,7 +6,7 @@
  */
 
 export type UserEntity = {
-    id: string;
+    username: string;
     groupId?: string;
-    pass: string;
+    password: string;
 };

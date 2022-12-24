@@ -14,10 +14,10 @@ import javax.persistence.Id;
 public class UserEntity {
     @Id @GeneratedValue
     private long uid;
-    @Column(name = "id")
-    private String userId;
-    @Column(name = "pass")
-    private String userPass;
+    @Column(name = "username")
+    private String username;
+    @Column(name = "password")
+    private String password;
     @Column(name = "groupId")
     private String groupId;
 
@@ -26,19 +26,19 @@ public class UserEntity {
     }
 
     public UserEntity(String id, String pass) {
-        this.userId = id;
-        this.userPass = pass;
+        this.username = id;
+        this.password = pass;
         this.groupId = ""; // 개인용 ToDo
     }
 
     public UserEntity(String id, String pass, String groupId) {
-        this.userId = id;
-        this.userPass = pass;
+        this.username = id;
+        this.password = pass;
         this.groupId = groupId; // 개인용 ToDo
     }
 
     @Override
     public String toString() {
-        return this.userId;
+        return this.username;
     }
 }
