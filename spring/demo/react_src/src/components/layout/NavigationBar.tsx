@@ -34,16 +34,35 @@ export const NavigationBar = () => {
                         <LangSelect />
 
                         <SliItem>
-                            <Link to="/home">{Constants.TEXT_HOME[language]}</Link>
+                            {
+                                !authenticated ? 
+                                (
+                                    <SliItem>
+                                        <Link to="/login">{Constants.TEXT_HOME[language]}</Link>
+                                    </SliItem>
+                                ):(
+                                    <SliItem>
+                                        <Link to="/home">{Constants.TEXT_HOME[language]}</Link>
+                                    </SliItem>
+                                )
+                            }
                         </SliItem>
 
                         <SliItem>
-                            <Link to="/todo">{Constants.TEXT_TODO[language]}</Link>
+                            {
+                                !authenticated ? 
+                                (
+                                    <SliItem>
+                                        <Link to="/login">{Constants.TEXT_TODO[language]}</Link>
+                                    </SliItem>
+                                ):(
+                                    <SliItem>
+                                        <Link to="/todo">{Constants.TEXT_TODO[language]}</Link>
+                                    </SliItem>
+                                )
+                            }
                         </SliItem>
-
-                        {/* <SliItem>
-                                <Link onClick={logout} to="/logout">{Constants.TEXT_LOGOUT[language]}</Link>
-                        </SliItem> */}
+                        
                         {
                             !authenticated ? 
                             (<SliItem>

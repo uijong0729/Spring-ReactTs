@@ -31,7 +31,7 @@ public class UserController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = {MediaType.APPLICATION_JSON_VALUE}
     )
-    public ResponseEntity<String> showLoginForm(UserParam param) {
+    public ResponseEntity<String> login(UserParam param) {
         //test user
         userService.signupDummy();
 
