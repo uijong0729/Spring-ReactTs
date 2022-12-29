@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class TodoEntity {
+public class TodoEntity extends AuthEntity{
     
     @Id @GeneratedValue
     private Long id;

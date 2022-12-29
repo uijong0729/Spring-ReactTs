@@ -14,7 +14,7 @@ import { Constants } from '../../../utils/Constants';
 
 export const TodoDialog = () => {
   const [open, setOpen] = React.useState(false);
-  const { addTodo, getAllTodos } = useTodos();
+  const { addTodo } = useTodos();
   const { language, setLanguage } = React.useContext(LanguageContext);
   
   const handleClickOpen = () => {
@@ -28,9 +28,7 @@ export const TodoDialog = () => {
   const handleSubmit = () => {
     const deadline: Date = new Date((document.getElementById("todoDeadline") as HTMLInputElement).value);
     const inputValue: string = (document.getElementById("todoText") as HTMLInputElement).value;
-    addTodo(inputValue, deadline).then(() => {
-      window.location.reload();
-    });
+    addTodo(inputValue, deadline);
     setOpen(false);
   };
 
