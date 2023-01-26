@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
 
 @Slf4j
@@ -24,7 +27,7 @@ public class TodoController {
     
     // curl -X POST http://localhost:8080/putTodo -H "Content-Type: application/json" -d "{ \"text\": \"johnny\" }"
     @PostMapping(value = "/putTodo", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TodoEntity> putTodo(@RequestBody TodoEntity todo) {
+    public ResponseEntity<TodoEntity> putTodo(@Valid @RequestBody TodoEntity todo) {
         log.info("posted entity : {}", todo.toString());
         var result = service.putTodo(todo);
         return ResponseEntity.ok(result);
