@@ -1,0 +1,2 @@
+cd D:\code\javascript\react\start_react\spring\demo\angular_src\todo-app;
+ng serve --open
